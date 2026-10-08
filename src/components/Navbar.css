@@ -1,0 +1,310 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 72px;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+
+  color: #ffffff;
+
+  background: transparent;
+
+  transition:
+    background 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+
+/* =========================================================
+   NAVBAR LOGO
+========================================================= */
+/* =========================================================
+   NAVBAR LOGO
+========================================================= */
+
+.navbar-logo {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 125px !important;
+  height: 58px !important;
+
+  flex-shrink: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.navbar-logo img {
+  display: block !important;
+
+  width: 145px !important;
+  max-width: 145px !important;
+
+  height: auto !important;
+  max-height: 58px !important;
+
+  object-fit: contain !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+
+  gap: 2.6rem;
+
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.navbar-links a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.navbar-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--tmch-blue);
+
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   NAVBAR ACTIONS
+========================================================= */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+
+/* =========================================================
+   CONTACT BUTTON
+========================================================= */
+
+.nav-contact {
+  display: flex;
+  align-items: center;
+
+  gap: 0.55rem;
+
+  padding: 0.78rem 1.25rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  border-radius: 100px;
+
+  font-size: 0.86rem;
+  font-weight: 600;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-contact:hover {
+  background: #ffffff;
+
+  color: #050607;
+
+  border-color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.menu-button {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: rotate(5deg);
+}
+
+/* =========================================================
+   SCROLLED NAVBAR
+========================================================= */
+
+.navbar-scrolled {
+  background: rgba(5, 6, 7, 0.92);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .navbar-links {
+    gap: 1.8rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.85rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    height: 80px;
+
+    padding: 0 5vw;
+  }
+
+  .navbar-links {
+    position: absolute;
+
+    top: 92px;
+    left: 5vw;
+    right: 5vw;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 1.25rem;
+
+    padding: 1.5rem;
+
+    background: rgba(5, 6, 7, 0.96);
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+
+  .menu-button {
+    display: flex;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .navbar {
+    height: 74px;
+
+    padding: 0 6vw;
+  }
+
+  .navbar-logo {
+    font-size: 1.55rem;
+  }
+
+  .navbar-links {
+    top: 86px;
+
+    left: 6vw;
+    right: 6vw;
+  }
+
+}

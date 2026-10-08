@@ -1,0 +1,756 @@
+/* =========================
+   ABOUT INTRO
+========================= */
+
+.about-intro {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--tmch-off-white);
+  color: var(--tmch-dark);
+
+  padding: 140px 5vw 0;
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.about-reveal {
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* Slightly stagger the main elements */
+
+.about-content.about-reveal {
+  transition-delay: 0.05s;
+}
+
+.about-visual.about-reveal {
+  transition-delay: 0.18s;
+}
+
+.about-stats.about-reveal {
+  transition-delay: 0.3s;
+}
+
+.about-dots-top.about-reveal {
+  transition-delay: 0.1s;
+}
+
+.about-dots-bottom.about-reveal {
+  transition-delay: 0.25s;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.about-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr
+    1.1fr;
+
+  gap: 100px;
+
+  align-items: stretch;
+
+  z-index: 2;
+}
+
+
+/* =========================
+   SECTION LABEL
+========================= */
+
+.section-label {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  margin-top: -45px;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.dark-label {
+  color: rgba(5, 7, 10, 0.5);
+}
+
+.dark-label span {
+  width: 45px;
+  height: 2px;
+
+  background: var(--tmch-blue);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 40px 0;
+}
+
+.about-content h2 {
+  margin-top: 30px;
+
+  font-family: var(--font-heading);
+
+  font-size:
+    clamp(48px, 5.5vw, 85px);
+
+  font-weight: 500;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.06em;
+}
+
+.about-content h2 span {
+  color: var(--tmch-blue);
+}
+
+.about-content p {
+  max-width: 500px;
+
+  margin-top: 35px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color: rgba(5, 7, 10, 0.62);
+}
+
+
+/* =========================
+   LINK
+========================= */
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  width: fit-content;
+
+  margin-top: 30px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: var(--tmch-dark);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-link:hover {
+  color: var(--tmch-blue);
+
+  transform: translateX(4px);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.about-visual {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.about-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  /*
+    Removed fixed height / aspect ratio.
+    The image now follows the height of
+    the About content area.
+  */
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  background: #ddd;
+}
+
+.about-image-wrapper img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+border-radius: 25px;
+  object-fit: cover;
+}
+
+.about-image-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+.about-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(5, 7, 10, 0.12),
+      transparent 60%
+    );
+}
+
+
+/* =========================
+   IMAGE LABEL
+========================= */
+
+.about-image-label {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 12px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  color: rgba(5, 7, 10, 0.45);
+}
+
+
+/* =========================
+   BLUE DOT FIELDS
+========================= */
+
+.about-dots {
+  position: absolute;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(8, 6px);
+
+  gap: 10px;
+
+  width: max-content;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* Individual circles */
+
+/* =========================
+   TWINKLING DOTS
+========================= */
+/* =========================
+   SUBTLE DOT TWINKLE
+========================= */
+
+.about-dots span {
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--tmch-blue);
+
+  opacity: 0.3;
+
+  box-shadow:
+    0 0 4px rgba(8, 120, 255, 0.2);
+
+  animation: aboutDotTwinkle 4.5s ease-in-out infinite;
+}
+
+/* Subtle variation */
+
+.about-dots span:nth-child(3n) {
+  animation-delay: 0.8s;
+}
+
+.about-dots span:nth-child(5n) {
+  animation-delay: 1.6s;
+}
+
+.about-dots span:nth-child(7n) {
+  animation-delay: 2.4s;
+}
+
+@keyframes aboutDotTwinkle {
+
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+
+    box-shadow:
+      0 0 3px rgba(8, 120, 255, 0.15);
+  }
+
+  50% {
+    opacity: 0.55;
+    transform: scale(1.05);
+
+    box-shadow:
+      0 0 5px rgba(8, 120, 255, 0.3);
+  }
+
+}
+/* =========================
+   TOP RIGHT DOT FIELD
+========================= */
+
+.about-dots-top {
+  top: 90px;
+
+  right: 3.5%;
+}
+
+
+/* =========================
+   BOTTOM LEFT DOT FIELD
+========================= */
+
+.about-dots-bottom {
+  left: 2.5%;
+
+  bottom: 115px;
+
+  transform:
+    rotate(-8deg);
+}
+
+/* =========================================
+   ABOUT CAPABILITY CARDS
+========================================= */
+
+.about-stats {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 75px auto 0;
+  padding: 0 5vw;
+  display: flex;
+  gap: 18px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.about-stat {
+  position: relative;
+
+  flex: 1;
+  min-width: 0;
+  min-height: 155px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px 28px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.025);
+
+  transition:
+    flex 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.about-stat:hover {
+  transform: translateY(-8px);
+
+  border-color: #0878ff;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.09),
+    0 0 0 1px rgba(8, 120, 255, 0.08);
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.about-stat-number {
+  display: block;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: #0878ff;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.about-stat:hover .about-stat-number {
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.about-stat h3 {
+  margin: 30px 0 0;
+
+  font-family: "Sora", sans-serif;
+
+  font-size: 1.05rem;
+  line-height: 1.35;
+
+  font-weight: 500;
+
+  letter-spacing: -0.025em;
+
+  color: #111;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-stat:hover h3 {
+  color: #0878ff;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   BLUE BOTTOM ACCENT
+========================================= */
+
+.about-stat::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: #0878ff;
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-stat:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   TOP-RIGHT DOT
+========================================= */
+
+.about-stat::before {
+  content: "";
+
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #0878ff;
+
+  opacity: 0.18;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-stat:hover::before {
+  opacity: 1;
+
+  transform: scale(1.35);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .about-stats {
+    flex-wrap: wrap;
+  }
+
+  .about-stat {
+    flex: 1 1 calc(50% - 9px);
+  }
+
+  .about-stat:hover {
+    flex: 1 1 calc(50% - 9px);
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .about-stats {
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-top: 50px;
+
+    padding: 0 6vw;
+  }
+
+  .about-stat {
+    flex: none;
+
+    width: 100%;
+
+    min-height: 135px;
+
+    padding: 25px 24px;
+  }
+
+  .about-stat:hover {
+    flex: none;
+
+    transform: translateY(-4px);
+  }
+
+  .about-stat h3 {
+    margin-top: 25px;
+
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .about-stat,
+  .about-stat h3,
+  .about-stat-number,
+  .about-stat::before,
+  .about-stat::after {
+    transition: none;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .about-content h2 {
+    font-size:
+      clamp(48px, 8vw, 75px);
+  }
+
+  .about-image-wrapper {
+    height: 550px;
+
+    flex: none;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .about-intro {
+    padding: 100px 5vw 0;
+  }
+
+  .about-container {
+    gap: 50px;
+  }
+
+  .about-content {
+    padding: 20px 0;
+  }
+
+  .about-content h2 {
+    font-size:
+      clamp(44px, 12vw, 65px);
+  }
+
+  .about-content p {
+    font-size: 14px;
+  }
+
+  .about-image-wrapper {
+    height: 420px;
+  }
+
+  .about-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    margin-top: 80px;
+  }
+
+  .about-stat {
+    border-bottom:
+      1px solid
+      rgba(5, 7, 10, 0.15);
+  }
+
+  .about-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .about-stat:nth-child(3),
+  .about-stat:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .about-stat:nth-child(3) {
+    padding-left: 0;
+  }
+
+  .about-dots-top {
+    right: -10px;
+
+    top: 70px;
+
+    transform: scale(0.8);
+  }
+
+  .about-dots-bottom {
+    left: -15px;
+
+    bottom: 90px;
+
+    transform:
+      rotate(-8deg)
+      scale(0.75);
+  }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .about-reveal {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+}

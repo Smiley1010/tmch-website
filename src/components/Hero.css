@@ -1,0 +1,554 @@
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 100svh;
+  width: 100%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  background: #050607;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   BACKGROUND SLIDESHOW
+========================================= */
+
+.hero-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+
+  inset: -3%;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+
+  transform: scale(1.04);
+
+  transition:
+    opacity 1.4s ease-in-out,
+    transform 7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-slide.active {
+  opacity: 1;
+
+  transform: scale(1.09);
+}
+
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 5, 7, 0.9) 0%,
+      rgba(3, 5, 7, 0.76) 35%,
+      rgba(3, 5, 7, 0.48) 68%,
+      rgba(3, 5, 7, 0.36) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Additional bottom fade */
+
+.hero-overlay::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(3, 5, 7, 0.65) 0%,
+      transparent 35%
+    );
+}
+
+
+/* =========================================
+   BLUE ATMOSPHERE
+========================================= */
+
+.hero-blue-glow {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 650px;
+  height: 650px;
+
+  right: -180px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(8, 120, 255, 0.16) 0%,
+      rgba(8, 120, 255, 0.06) 35%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 150px 5vw 110px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.hero-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 28px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.hero-label span {
+  display: block;
+
+  width: 28px;
+  height: 1px;
+
+  background: #0878ff;
+}
+
+
+/* =========================================
+   MAIN HEADING
+========================================= */
+
+.hero h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-family: "Sora", sans-serif;
+
+  font-size: clamp(3.4rem, 6.5vw, 6.5rem);
+
+  line-height: 0.94;
+
+  font-weight: 500;
+
+  letter-spacing: -0.065em;
+
+  color: #ffffff;
+}
+
+.hero h1 span {
+  color: #0878ff;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.hero-description {
+  max-width: 690px;
+
+  margin: 42px 0 0;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+
+  line-height: 1.75;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 42px;
+}
+
+.hero-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-height: 64px;
+
+  padding: 0 30px;
+
+  border-radius: 999px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+
+/* PRIMARY */
+
+.hero-button-primary {
+  background: #0878ff;
+
+  color: #ffffff;
+
+  border: 1px solid #0878ff;
+}
+
+.hero-button-primary:hover {
+  transform: translateY(-3px);
+
+  background: #1683ff;
+
+  gap: 16px;
+}
+
+
+/* SECONDARY */
+
+.hero-button-secondary {
+  background: rgba(0, 0, 0, 0.18);
+
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-button-secondary:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(255, 255, 255, 0.6);
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   SLIDE INFORMATION
+========================================= */
+
+.hero-slide-info {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 5vw;
+  bottom: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  font-family: "Manrope", sans-serif;
+}
+
+.hero-slide-category {
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-slide-counter {
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================
+   SLIDE INDICATORS
+========================================= */
+
+.hero-slide-indicators {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 5vw;
+  bottom: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.hero-indicator {
+  width: 36px;
+  height: 3px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  cursor: pointer;
+
+  transition:
+    width 0.4s ease,
+    background 0.4s ease;
+}
+
+.hero-indicator span {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  background: #0878ff;
+}
+
+.hero-indicator.active {
+  width: 60px;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.hero-indicator.active span {
+  width: 100%;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .hero-content {
+    padding-top: 140px;
+  }
+
+  .hero h1 {
+    max-width: 780px;
+  }
+
+  .hero-description {
+    max-width: 600px;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 5, 7, 0.88),
+        rgba(3, 5, 7, 0.6)
+      );
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 100svh;
+
+    align-items: flex-end;
+  }
+
+  .hero-slide {
+    background-position: center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 5, 7, 0.68) 0%,
+        rgba(3, 5, 7, 0.62) 35%,
+        rgba(3, 5, 7, 0.9) 100%
+      );
+  }
+
+  .hero-content {
+    padding: 150px 6vw 125px;
+  }
+
+  .hero-label {
+    margin-bottom: 22px;
+
+    font-size: 0.65rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 13vw, 5rem);
+
+    line-height: 0.95;
+  }
+
+  .hero-description {
+    margin-top: 28px;
+
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    margin-top: 30px;
+  }
+
+  .hero-button {
+    width: 100%;
+
+    min-height: 58px;
+  }
+
+  .hero-slide-indicators {
+    left: 6vw;
+    bottom: 30px;
+  }
+
+  .hero-slide-info {
+    right: 6vw;
+    bottom: 30px;
+
+    gap: 12px;
+  }
+
+  .hero-slide-category {
+    display: none;
+  }
+
+  .hero-blue-glow {
+    width: 400px;
+    height: 400px;
+
+    right: -180px;
+    bottom: -180px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-slide {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+
+  .hero-slide.active {
+    transform: none;
+  }
+
+  .hero-button,
+  .hero-indicator {
+    transition: none;
+  }
+}
