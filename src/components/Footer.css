@@ -1,0 +1,366 @@
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background: #050607;
+  color: #fff;
+  padding: 0 6.5%;
+}
+
+.footer-main {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 1.15fr 1.15fr;
+  gap: 55px;
+  padding: 82px 0 76px;
+}
+
+.footer-brand {
+  max-width: 310px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.footer-logo img {
+  display: block;
+  width: 145px;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.footer-brand > p {
+  max-width: 300px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  line-height: 1.95;
+}
+
+.footer-contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 13px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.footer-contact-button svg {
+  color: #1683ff;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-contact-button:hover {
+  background: #0878ff;
+  border-color: #0878ff;
+}
+
+.footer-contact-button:hover svg {
+  color: #fff;
+  transform: translate(2px, -2px);
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-column h3 {
+  margin: 7px 0 12px;
+  color: #fff;
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-column > a {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-column > a:hover {
+  color: #1683ff;
+  transform: translateX(3px);
+}
+
+.footer-location {
+  gap: 12px;
+}
+
+.footer-location-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(22, 131, 255, 0.35);
+  border-radius: 50%;
+  color: #1683ff;
+}
+
+.footer-location > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.footer-column > a.footer-location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.footer-location-link svg {
+  color: #1683ff;
+}
+
+.footer-statement {
+  position: relative;
+  overflow: hidden;
+  padding: 48px 0 55px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.footer-statement > span {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #1683ff;
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.footer-statement h2 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2.4rem, 5.6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: 1.12;
+}
+
+.footer-statement h2 span {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.footer-statement > a {
+  position: absolute;
+  right: 0;
+  bottom: 55px;
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 50%;
+  background: #0878ff;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-statement > a:hover {
+  background: #1683ff;
+  transform: translate(3px, -3px);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1440px;
+  min-height: 78px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.48);
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #1683ff;
+}
+
+.footer-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-back-top:hover {
+  color: #fff;
+}
+
+.footer-back-top span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: #1683ff;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.footer-back-top:hover span {
+  border-color: #0878ff;
+  background: #0878ff;
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .footer-top {
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 40px 30px;
+  }
+
+  .footer-brand {
+    grid-row: span 2;
+  }
+
+  .footer-location {
+    grid-column: 2 / 4;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-footer {
+    padding: 0 6%;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px 24px;
+    padding: 60px 0 48px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    max-width: 100%;
+  }
+
+  .footer-brand > p {
+    max-width: 350px;
+  }
+
+  .footer-logo img {
+    width: 130px;
+  }
+
+  .footer-column h3 {
+    font-size: 13px;
+  }
+
+  .footer-column > a,
+  .footer-location > p {
+    font-size: 11px;
+  }
+
+  .footer-location {
+    grid-column: auto;
+  }
+
+  .footer-statement {
+    padding: 38px 0 42px;
+  }
+
+  .footer-statement h2 {
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+    letter-spacing: -1.8px;
+  }
+
+  .footer-statement > a {
+    position: static;
+    width: 48px;
+    height: 48px;
+    margin-top: 25px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 0;
+  }
+
+  .footer-bottom-links {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-contact-button,
+  .footer-contact-button svg,
+  .footer-column > a,
+  .footer-statement > a,
+  .footer-back-top,
+  .footer-back-top span {
+    transition: none;
+  }
+}

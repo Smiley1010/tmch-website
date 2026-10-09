@@ -1,0 +1,375 @@
+.team-section {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 6.5%;
+  background: #f4f5f7;
+  color: #080b10;
+}
+
+.team-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.team-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 58px;
+}
+
+.team-heading-left {
+  flex: 1;
+}
+
+.team-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  color: #59616c;
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.team-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0878ff;
+  box-shadow: 0 0 12px rgba(8, 120, 255, 0.3);
+}
+
+.team-heading h2 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: 1.08;
+}
+
+.team-heading h2 span {
+  color: #0878ff;
+}
+
+.team-heading-right {
+  width: 340px;
+  flex-shrink: 0;
+  padding-bottom: 5px;
+}
+
+.team-heading-right > p {
+  margin: 0 0 24px;
+  color: #626a75;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.team-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #080b10;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.team-view-all svg {
+  color: #0878ff;
+  transition: transform 0.25s ease;
+}
+
+.team-view-all:hover {
+  color: #0878ff;
+}
+
+.team-view-all:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.team-card {
+  min-width: 0;
+}
+
+.team-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 4.8;
+  border-radius: 18px;
+  background: #e0e4e9;
+}
+
+.team-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.team-card:hover .team-image-wrap img {
+  transform: scale(1.045);
+}
+
+.team-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(8, 11, 16, 0.45);
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.team-image-arrow {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #0878ff;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.team-card:hover .team-image-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-card-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 21px 2px 0;
+}
+
+.team-card-info h3 {
+  margin: 0 0 8px;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.5;
+}
+
+.team-card-info p {
+  margin: 0;
+  color: #69717d;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.team-blue-line {
+  width: 22px;
+  height: 3px;
+  flex-shrink: 0;
+  margin-top: 7px;
+  border-radius: 10px;
+  background: #0878ff;
+  transition: width 0.25s ease;
+}
+
+.team-card:hover .team-blue-line {
+  width: 34px;
+}
+
+.team-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 55px;
+  padding-top: 25px;
+  border-top: 1px solid #d9dde3;
+}
+
+.team-bottom > p {
+  margin: 0;
+  color: #59616c;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+}
+
+.team-bottom > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 14px 20px;
+  border: 1px solid #cbd2dc;
+  border-radius: 999px;
+  color: #080b10;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.team-bottom > a svg {
+  color: #0878ff;
+}
+
+.team-bottom > a:hover {
+  border-color: #0878ff;
+  background: #0878ff;
+  color: #fff;
+}
+
+.team-bottom > a:hover svg {
+  color: #fff;
+}
+
+.team-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: var(--team-delay, 0ms);
+}
+
+.team-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .team-section {
+    padding: 100px 5%;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 22px;
+  }
+
+  .team-card-info h3 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 700px) {
+  .team-section {
+    padding: 78px 6%;
+  }
+
+  .team-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 38px;
+  }
+
+  .team-heading h2 {
+    font-size: clamp(2.5rem, 10vw, 3.6rem);
+    letter-spacing: -2px;
+  }
+
+  .team-heading-right {
+    width: 100%;
+  }
+
+  .team-grid {
+    gap: 30px 14px;
+  }
+
+  .team-image-wrap {
+    aspect-ratio: 4 / 5;
+    border-radius: 13px;
+  }
+
+  .team-number {
+    top: 9px;
+    left: 9px;
+    width: 31px;
+    height: 31px;
+    font-size: 10px;
+  }
+
+  .team-image-arrow {
+    right: 8px;
+    bottom: 8px;
+    width: 34px;
+    height: 34px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .team-card-info {
+    padding-top: 13px;
+    gap: 6px;
+  }
+
+  .team-card-info h3 {
+    font-size: 13px;
+    letter-spacing: -0.3px;
+    overflow-wrap: anywhere;
+  }
+
+  .team-card-info p {
+    font-size: 11px;
+  }
+
+  .team-blue-line {
+    width: 14px;
+    margin-top: 5px;
+  }
+
+  .team-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .team-image-wrap img,
+  .team-image-arrow,
+  .team-blue-line {
+    transition: none;
+  }
+}

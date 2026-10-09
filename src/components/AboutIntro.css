@@ -4,15 +4,11 @@
 
 .about-intro {
   position: relative;
-
   overflow: hidden;
-
   background: var(--tmch-off-white);
   color: var(--tmch-dark);
-
-  padding: 140px 5vw 0;
+  padding: 100px 5vw 0;
 }
-
 
 /* =========================
    SCROLL REVEAL
@@ -20,9 +16,7 @@
 
 .about-reveal {
   opacity: 0;
-
   transform: translateY(35px);
-
   transition:
     opacity 0.8s ease,
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -30,12 +24,8 @@
 
 .about-reveal.is-visible {
   opacity: 1;
-
   transform: translateY(0);
 }
-
-
-/* Slightly stagger the main elements */
 
 .about-content.about-reveal {
   transition-delay: 0.05s;
@@ -57,32 +47,21 @@
   transition-delay: 0.25s;
 }
 
-
 /* =========================
    CONTAINER
 ========================= */
 
 .about-container {
   position: relative;
-
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 85px);
   width: 100%;
   max-width: 1600px;
-
   margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    0.9fr
-    1.1fr;
-
-  gap: 100px;
-
-  align-items: stretch;
-
-  z-index: 2;
 }
-
 
 /* =========================
    SECTION LABEL
@@ -91,12 +70,10 @@
 .section-label {
   display: flex;
   align-items: center;
-
   gap: 12px;
-  margin-top: -45px;
+  margin-top: 0;
   font-size: 10px;
   font-weight: 700;
-
   letter-spacing: 0.16em;
 }
 
@@ -105,12 +82,12 @@
 }
 
 .dark-label span {
+  display: inline-block;
   width: 45px;
   height: 2px;
-
+  flex-shrink: 0;
   background: var(--tmch-blue);
 }
-
 
 /* =========================
    CONTENT
@@ -119,24 +96,17 @@
 .about-content {
   display: flex;
   flex-direction: column;
-
   justify-content: center;
-
-  padding: 40px 0;
+  min-width: 0;
+  padding: 30px 0;
 }
 
 .about-content h2 {
   margin-top: 30px;
-
   font-family: var(--font-heading);
-
-  font-size:
-    clamp(48px, 5.5vw, 85px);
-
+  font-size: clamp(48px, 5.2vw, 80px);
   font-weight: 500;
-
-  line-height: 0.98;
-
+  line-height: 1.02;
   letter-spacing: -0.06em;
 }
 
@@ -146,47 +116,11 @@
 
 .about-content p {
   max-width: 500px;
-
-  margin-top: 35px;
-
+  margin-top: 30px;
   font-size: 15px;
-
   line-height: 1.8;
-
   color: rgba(5, 7, 10, 0.62);
 }
-
-
-/* =========================
-   LINK
-========================= */
-
-.about-link {
-  display: inline-flex;
-  align-items: center;
-
-  gap: 10px;
-
-  width: fit-content;
-
-  margin-top: 30px;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  color: var(--tmch-dark);
-
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.about-link:hover {
-  color: var(--tmch-blue);
-
-  transform: translateX(4px);
-}
-
 
 /* =========================
    IMAGE
@@ -194,40 +128,32 @@
 
 .about-visual {
   position: relative;
-
   display: flex;
   flex-direction: column;
-
-  height: 100%;
+  justify-self: end;
+  width: 100%;
+  max-width: 650px;
+  min-width: 0;
+  height: auto;
 }
 
 .about-image-wrapper {
   position: relative;
-
   width: 100%;
-
-  /*
-    Removed fixed height / aspect ratio.
-    The image now follows the height of
-    the About content area.
-  */
-
-  flex: 1;
-
-  min-height: 0;
-
+  height: clamp(330px, 33vw, 450px);
   overflow: hidden;
-
+  border-radius: 28px;
   background: #ddd;
 }
 
 .about-image-wrapper img {
   display: block;
-
   width: 100%;
   height: 100%;
-border-radius: 25px;
+  border-radius: inherit;
   object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
 }
 
 .about-image-wrapper:hover img {
@@ -236,17 +162,15 @@ border-radius: 25px;
 
 .about-image-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(5, 7, 10, 0.12),
-      transparent 60%
-    );
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(5, 7, 10, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
 }
-
 
 /* =========================
    IMAGE LABEL
@@ -254,19 +178,14 @@ border-radius: 25px;
 
 .about-image-label {
   display: flex;
-
   justify-content: space-between;
-
-  padding-top: 12px;
-
+  gap: 15px;
+  padding: 12px 4px 0;
   font-size: 9px;
   font-weight: 700;
-
   letter-spacing: 0.15em;
-
   color: rgba(5, 7, 10, 0.45);
 }
-
 
 /* =========================
    BLUE DOT FIELDS
@@ -274,50 +193,24 @@ border-radius: 25px;
 
 .about-dots {
   position: absolute;
-
   display: grid;
-
-  grid-template-columns:
-    repeat(8, 6px);
-
+  grid-template-columns: repeat(8, 6px);
   gap: 10px;
-
   width: max-content;
-
   z-index: 1;
-
   pointer-events: none;
 }
 
-
-/* Individual circles */
-
-/* =========================
-   TWINKLING DOTS
-========================= */
-/* =========================
-   SUBTLE DOT TWINKLE
-========================= */
-
 .about-dots span {
   display: block;
-
   width: 5px;
   height: 5px;
-
   border-radius: 50%;
-
   background: var(--tmch-blue);
-
   opacity: 0.3;
-
-  box-shadow:
-    0 0 4px rgba(8, 120, 255, 0.2);
-
+  box-shadow: 0 0 4px rgba(8, 120, 255, 0.2);
   animation: aboutDotTwinkle 4.5s ease-in-out infinite;
 }
-
-/* Subtle variation */
 
 .about-dots span:nth-child(3n) {
   animation-delay: 0.8s;
@@ -332,47 +225,29 @@ border-radius: 25px;
 }
 
 @keyframes aboutDotTwinkle {
-
   0%,
   100% {
     opacity: 0.25;
     transform: scale(0.9);
-
-    box-shadow:
-      0 0 3px rgba(8, 120, 255, 0.15);
+    box-shadow: 0 0 3px rgba(8, 120, 255, 0.15);
   }
 
   50% {
     opacity: 0.55;
     transform: scale(1.05);
-
-    box-shadow:
-      0 0 5px rgba(8, 120, 255, 0.3);
+    box-shadow: 0 0 5px rgba(8, 120, 255, 0.3);
   }
-
 }
-/* =========================
-   TOP RIGHT DOT FIELD
-========================= */
 
 .about-dots-top {
-  top: 90px;
-
+  top: 35px;
   right: 3.5%;
 }
 
-
-/* =========================
-   BOTTOM LEFT DOT FIELD
-========================= */
-
 .about-dots-bottom {
   left: 2.5%;
-
   bottom: 115px;
-
-  transform:
-    rotate(-8deg);
+  transform: rotate(-8deg);
 }
 
 /* =========================================
@@ -382,43 +257,30 @@ border-radius: 25px;
 .about-stats {
   position: relative;
   z-index: 3;
-
-  width: 100%;
-  max-width: 1400px;
-
-  margin: 75px auto 0;
-  padding: 0 5vw;
   display: flex;
   gap: 18px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 75px auto 0;
+  padding: 0 5vw;
 }
 
-
-/* =========================================
-   CARD
-========================================= */
+/* CARD */
 
 .about-stat {
   position: relative;
-
   flex: 1;
   min-width: 0;
   min-height: 155px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 30px 28px;
-
-  background: #ffffff;
-
+  background: #fff;
   border: 1px solid rgba(17, 17, 17, 0.14);
   border-radius: 15px;
-
   overflow: hidden;
-
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.025);
-
   transition:
     flex 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.35s ease,
@@ -426,65 +288,42 @@ border-radius: 25px;
     box-shadow 0.35s ease;
 }
 
-
-/* =========================================
-   HOVER
-========================================= */
+/* EXPANDING HOVER */
 
 .about-stat:hover {
   transform: translateY(-8px);
-
   border-color: #0878ff;
-
   box-shadow:
     0 18px 40px rgba(0, 0, 0, 0.09),
     0 0 0 1px rgba(8, 120, 255, 0.08);
 }
 
-
-/* =========================================
-   NUMBER
-========================================= */
+/* NUMBER */
 
 .about-stat-number {
   display: block;
-
   font-family: "Manrope", sans-serif;
-
   font-size: 0.72rem;
   font-weight: 700;
-
   letter-spacing: 0.12em;
-
   color: #0878ff;
-
-  transition:
-    transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .about-stat:hover .about-stat-number {
   transform: translateX(3px);
 }
 
-
-/* =========================================
-   TITLE
-========================================= */
+/* TITLE */
 
 .about-stat h3 {
   margin: 30px 0 0;
-
   font-family: "Sora", sans-serif;
-
   font-size: 1.05rem;
   line-height: 1.35;
-
   font-weight: 500;
-
   letter-spacing: -0.025em;
-
   color: #111;
-
   transition:
     color 0.3s ease,
     transform 0.3s ease;
@@ -492,62 +331,40 @@ border-radius: 25px;
 
 .about-stat:hover h3 {
   color: #0878ff;
-
   transform: translateX(3px);
 }
 
-
-/* =========================================
-   BLUE BOTTOM ACCENT
-========================================= */
+/* BLUE BOTTOM ACCENT */
 
 .about-stat::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   bottom: 0;
-
   width: 100%;
   height: 3px;
-
   background: #0878ff;
-
   transform: scaleX(0);
-
   transform-origin: left;
-
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-stat:hover::after {
   transform: scaleX(1);
 }
 
-
-/* =========================================
-   TOP-RIGHT DOT
-========================================= */
+/* TOP-RIGHT DOT */
 
 .about-stat::before {
   content: "";
-
   position: absolute;
-
   top: 18px;
   right: 18px;
-
   width: 7px;
   height: 7px;
-
   border-radius: 50%;
-
   background: #0878ff;
-
   opacity: 0.18;
-
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
@@ -555,124 +372,17 @@ border-radius: 25px;
 
 .about-stat:hover::before {
   opacity: 1;
-
   transform: scale(1.35);
 }
 
-
 /* =========================================
    TABLET
 ========================================= */
 
 @media (max-width: 900px) {
-
-  .about-stats {
-    flex-wrap: wrap;
-  }
-
-  .about-stat {
-    flex: 1 1 calc(50% - 9px);
-  }
-
-  .about-stat:hover {
-    flex: 1 1 calc(50% - 9px);
-  }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-  .about-stats {
-    flex-direction: column;
-
-    gap: 14px;
-
-    margin-top: 50px;
-
-    padding: 0 6vw;
-  }
-
-  .about-stat {
-    flex: none;
-
-    width: 100%;
-
-    min-height: 135px;
-
-    padding: 25px 24px;
-  }
-
-  .about-stat:hover {
-    flex: none;
-
-    transform: translateY(-4px);
-  }
-
-  .about-stat h3 {
-    margin-top: 25px;
-
-    font-size: 1rem;
-  }
-}
-
-
-/* =========================================
-   REDUCED MOTION
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .about-stat,
-  .about-stat h3,
-  .about-stat-number,
-  .about-stat::before,
-  .about-stat::after {
-    transition: none;
-  }
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 900px) {
-
   .about-container {
     grid-template-columns: 1fr;
-
-    gap: 60px;
-  }
-
-  .about-content h2 {
-    font-size:
-      clamp(48px, 8vw, 75px);
-  }
-
-  .about-image-wrapper {
-    height: 550px;
-
-    flex: none;
-  }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-  .about-intro {
-    padding: 100px 5vw 0;
-  }
-
-  .about-container {
-    gap: 50px;
+    gap: 45px;
   }
 
   .about-content {
@@ -680,12 +390,7 @@ border-radius: 25px;
   }
 
   .about-content h2 {
-    font-size:
-      clamp(44px, 12vw, 65px);
-  }
-
-  .about-content p {
-    font-size: 14px;
+    font-size: clamp(48px, 8vw, 75px);
   }
 
   .about-image-wrapper {
@@ -693,64 +398,99 @@ border-radius: 25px;
   }
 
   .about-stats {
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    margin-top: 80px;
+    flex-wrap: wrap;
+    padding: 0;
   }
 
-  .about-stat {
-    border-bottom:
-      1px solid
-      rgba(5, 7, 10, 0.15);
+  .about-stat,
+  .about-stat:hover {
+    flex: 1 1 calc(50% - 9px);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .about-intro {
+    padding: 85px 5vw 0;
   }
 
-  .about-stat:nth-child(2) {
-    border-right: none;
+  .about-container {
+    gap: 35px;
   }
 
-  .about-stat:nth-child(3),
-  .about-stat:nth-child(4) {
-    border-bottom: none;
+  .about-content h2 {
+    font-size: clamp(44px, 12vw, 65px);
+    letter-spacing: -0.055em;
   }
 
-  .about-stat:nth-child(3) {
-    padding-left: 0;
+  .about-content p {
+    font-size: 14px;
+  }
+
+  .about-image-wrapper {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 50px;
+    padding: 0;
+  }
+
+  .about-stat,
+  .about-stat:hover {
+    flex: none;
+    width: 100%;
+    min-height: 135px;
+    padding: 25px 24px;
+  }
+
+  .about-stat:hover {
+    transform: translateY(-4px);
+  }
+
+  .about-stat h3 {
+    margin-top: 25px;
+    font-size: 1rem;
   }
 
   .about-dots-top {
     right: -10px;
-
     top: 70px;
-
     transform: scale(0.8);
   }
 
   .about-dots-bottom {
     left: -15px;
-
     bottom: 90px;
-
-    transform:
-      rotate(-8deg)
-      scale(0.75);
+    transform: rotate(-8deg) scale(0.75);
   }
-
 }
 
-
-/* =========================
+/* =========================================
    REDUCED MOTION
-========================= */
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-  .about-reveal {
+  .about-reveal,
+  .about-stat,
+  .about-stat h3,
+  .about-stat-number,
+  .about-stat::before,
+  .about-stat::after,
+  .about-image-wrapper img {
     opacity: 1;
-
-    transform: none;
-
     transition: none;
+    transform: none;
   }
 
+  .about-dots span {
+    animation: none;
+  }
 }

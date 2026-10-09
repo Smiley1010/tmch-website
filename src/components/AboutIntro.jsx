@@ -84,7 +84,7 @@ function AboutIntro() {
 
           <div className="about-image-wrapper">
             <img
-              src="/images/tmch-about.jpg"
+              src="/images/about-2.png"
               alt="TMCH Group project"
             />
 

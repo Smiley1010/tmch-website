@@ -37,7 +37,7 @@ const projects = [
     location: "Nigeria",
     year: "2025",
     image: "/images/projects/project-4.jpg",
-    size: "tall",
+    size: "medium",
   },
   {
     number: "05",

@@ -9,7 +9,7 @@ const services = [
     category: "ENVIRONMENTAL",
     description:
       "Comprehensive vessel and tank cleaning services for oil tankers, shipping vessels and other waterborne vessels, with confined-space safety as a core priority.",
-    image: "/images/services/vessel-tank-cleaning.jpg",
+    image: "/images/vessel-tank-cleaning.png",
   },
   {
     number: "02",
@@ -17,7 +17,7 @@ const services = [
     category: "WASTE MANAGEMENT",
     description:
       "Safe collection, containment, transportation and disposal of waste materials including solids, liquids, sludges and hazardous waste.",
-    image: "/images/services/waste-transportation.jpg",
+    image: "/images/waste-transport-services.png",
   },
   {
     number: "03",
@@ -25,7 +25,7 @@ const services = [
     category: "ENVIRONMENTAL",
     description:
       "Environmental testing and product quality control supported by professional laboratory services and analytical capabilities.",
-    image: "/images/services/laboratory.jpg",
+    image: "/images/lab-services.jpg",
   },
   {
     number: "04",
@@ -33,7 +33,7 @@ const services = [
     category: "COMPLIANCE",
     description:
       "Environmental monitoring, air quality assessment, soil and water sampling, laboratory analysis and environmental studies.",
-    image: "/images/services/environmental-monitoring.jpg",
+    image: "/images/env-compliance-monitoring.jpg",
   },
   {
     number: "05",
