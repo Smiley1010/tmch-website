@@ -11,7 +11,7 @@ function Footer() {
           <div className="footer-brand">
             <a href="/" className="footer-logo">
               <img
-                src="/images/tmch-logo.png"
+                src="/images/tmchlogo.png"
                 alt="TMCH Group Limited"
               />
             </a>
@@ -72,29 +72,22 @@ function Footer() {
             </a>
           </div>
         </div>
-
-        <div className="footer-statement">
-          <span>TMCH GROUP LIMITED</span>
-          <h2>
-            Building progress.
-            <br />
-            <span>Protecting tomorrow.</span>
-          </h2>
-          <a href="/contact" aria-label="Get in touch with TMCH">
-            <ArrowUpRight size={28} />
-          </a>
-        </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© {currentYear} TMCH Group Limited. All rights reserved.</p>
+        <p>
+          © {currentYear} TMCH Group Limited. All rights reserved.
+        </p>
 
         <div className="footer-bottom-links">
           <a href="/contact">Contact</a>
-          <a href="/company-policy">Company Policy</a>
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+          <a href="/copyright">Copyright</a>
+          <a href="/privacy-policy">Privacy Policy</a>
         </div>
 
         <button
+          type="button"
           className="footer-back-top"
           onClick={() =>
             window.scrollTo({ top: 0, behavior: "smooth" })

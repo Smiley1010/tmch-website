@@ -1,6 +1,7 @@
-/* =========================
+
+/* =========================================
    ABOUT INTRO
-========================= */
+========================================= */
 
 .about-intro {
   position: relative;
@@ -10,9 +11,9 @@
   padding: 100px 5vw 0;
 }
 
-/* =========================
+/* =========================================
    SCROLL REVEAL
-========================= */
+========================================= */
 
 .about-reveal {
   opacity: 0;
@@ -47,9 +48,9 @@
   transition-delay: 0.25s;
 }
 
-/* =========================
-   CONTAINER
-========================= */
+/* =========================================
+   MAIN CONTAINER
+========================================= */
 
 .about-container {
   position: relative;
@@ -63,9 +64,9 @@
   margin: 0 auto;
 }
 
-/* =========================
+/* =========================================
    SECTION LABEL
-========================= */
+========================================= */
 
 .section-label {
   display: flex;
@@ -89,9 +90,9 @@
   background: var(--tmch-blue);
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* =========================================
+   LEFT CONTENT
+========================================= */
 
 .about-content {
   display: flex;
@@ -122,9 +123,9 @@
   color: rgba(5, 7, 10, 0.62);
 }
 
-/* =========================
+/* =========================================
    IMAGE
-========================= */
+========================================= */
 
 .about-visual {
   position: relative;
@@ -140,7 +141,7 @@
 .about-image-wrapper {
   position: relative;
   width: 100%;
-  height: clamp(330px, 33vw, 450px);
+  height: clamp(255px, 33vw, 520px);
   overflow: hidden;
   border-radius: 28px;
   background: #ddd;
@@ -172,9 +173,9 @@
   pointer-events: none;
 }
 
-/* =========================
+/* =========================================
    IMAGE LABEL
-========================= */
+========================================= */
 
 .about-image-label {
   display: flex;
@@ -187,9 +188,9 @@
   color: rgba(5, 7, 10, 0.45);
 }
 
-/* =========================
+/* =========================================
    BLUE DOT FIELDS
-========================= */
+========================================= */
 
 .about-dots {
   position: absolute;
@@ -251,90 +252,145 @@
 }
 
 /* =========================================
-   ABOUT CAPABILITY CARDS
+   CAPABILITY CARDS
 ========================================= */
 
 .about-stats {
   position: relative;
   z-index: 3;
-  display: flex;
-  gap: 18px;
-  width: 100%;
-  max-width: 1400px;
-  margin: 75px auto 0;
-  padding: 0 5vw;
-}
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
 
-/* CARD */
+  /* Align cards with the content above */
+  width: 100%;
+  max-width: 1600px;
+  margin: 75px auto 0;
+  padding: 0;
+}
 
 .about-stat {
   position: relative;
-  flex: 1;
-  min-width: 0;
-  min-height: 155px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 30px 28px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 190px;
+  min-width: 0;
+  padding: 24px 20px;
+
+  appearance: none;
+  text-align: center;
+  font: inherit;
+  color: #111;
   background: #fff;
   border: 1px solid rgba(17, 17, 17, 0.14);
-  border-radius: 15px;
+  border-radius: 17px;
   overflow: hidden;
+  cursor: pointer;
+
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.025);
+
   transition:
-    flex 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* EXPANDING HOVER */
+/* Hover, focus and active state */
 
-.about-stat:hover {
-  transform: translateY(-8px);
+.about-stat:hover,
+.about-stat:focus-visible,
+.about-stat.is-active {
+  transform: translateY(-4px);
   border-color: #0878ff;
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.09),
-    0 0 0 1px rgba(8, 120, 255, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
 }
 
-/* NUMBER */
+.about-stat:focus-visible {
+  outline: 2px solid #0878ff;
+  outline-offset: 3px;
+}
+
+/* Number */
 
 .about-stat-number {
   display: block;
+  flex-shrink: 0;
+  text-align: center;
+
   font-family: "Manrope", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #0878ff;
-  transition: transform 0.3s ease;
 }
 
-.about-stat:hover .about-stat-number {
-  transform: translateX(3px);
-}
+/* Title */
 
-/* TITLE */
+.about-stat-title {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 25px;
 
-.about-stat h3 {
-  margin: 30px 0 0;
+  text-align: center;
   font-family: "Sora", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.35;
+  font-size: 1.02rem;
+  line-height: 1.4;
   font-weight: 500;
   letter-spacing: -0.025em;
-  color: #111;
+
   transition:
     color 0.3s ease,
     transform 0.3s ease;
 }
 
-.about-stat:hover h3 {
+.about-stat:hover .about-stat-title,
+.about-stat:focus-visible .about-stat-title,
+.about-stat.is-active .about-stat-title {
   color: #0878ff;
-  transform: translateX(3px);
+  transform: translateY(-2px);
 }
 
-/* BLUE BOTTOM ACCENT */
+/* Description revealed on hover */
+
+.about-stat-description {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+
+  text-align: center;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: rgba(17, 17, 17, 0.7);
+
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-stat:hover .about-stat-description,
+.about-stat:focus-visible .about-stat-description,
+.about-stat.is-active .about-stat-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* No arrows: use only the blue dot */
+
+.about-stat-arrow {
+  display: none;
+}
+
+/* Blue bottom accent */
 
 .about-stat::after {
   content: "";
@@ -344,35 +400,38 @@
   width: 100%;
   height: 3px;
   background: #0878ff;
+
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition: transform 0.35s ease;
 }
 
-.about-stat:hover::after {
+.about-stat:hover::after,
+.about-stat:focus-visible::after,
+.about-stat.is-active::after {
   transform: scaleX(1);
 }
 
-/* TOP-RIGHT DOT */
+/* Top-right blue dot */
 
 .about-stat::before {
   content: "";
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 19px;
+  right: 19px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #0878ff;
-  opacity: 0.18;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
 }
 
-.about-stat:hover::before {
+.about-stat:hover::before,
+.about-stat:focus-visible::before,
+.about-stat.is-active::before {
   opacity: 1;
-  transform: scale(1.35);
 }
 
 /* =========================================
@@ -393,18 +452,27 @@
     font-size: clamp(48px, 8vw, 75px);
   }
 
+  .about-visual {
+    justify-self: stretch;
+    max-width: none;
+  }
+
   .about-image-wrapper {
     height: 420px;
   }
 
   .about-stats {
-    flex-wrap: wrap;
-    padding: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
-  .about-stat,
-  .about-stat:hover {
-    flex: 1 1 calc(50% - 9px);
+  .about-stat {
+    height: 190px;
+    padding: 22px;
+  }
+
+  .about-stat-description {
+    font-size: 0.74rem;
   }
 }
 
@@ -437,27 +505,34 @@
   }
 
   .about-stats {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 14px;
-    margin-top: 50px;
-    padding: 0;
+    margin-top: 45px;
   }
 
-  .about-stat,
-  .about-stat:hover {
-    flex: none;
-    width: 100%;
-    min-height: 135px;
-    padding: 25px 24px;
+  .about-stat {
+    height: auto;
+    min-height: 150px;
+    padding: 23px;
   }
 
-  .about-stat:hover {
-    transform: translateY(-4px);
+  /* Descriptions stay visible on touch screens */
+
+  .about-stat-description {
+    margin-top: 12px;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
   }
 
-  .about-stat h3 {
-    margin-top: 25px;
-    font-size: 1rem;
+  .about-stat-title {
+    margin-top: 22px;
+  }
+
+  .about-stat:hover,
+  .about-stat:focus-visible,
+  .about-stat.is-active {
+    transform: none;
   }
 
   .about-dots-top {
@@ -480,14 +555,12 @@
 @media (prefers-reduced-motion: reduce) {
   .about-reveal,
   .about-stat,
-  .about-stat h3,
-  .about-stat-number,
+  .about-stat-title,
+  .about-stat-description,
   .about-stat::before,
   .about-stat::after,
   .about-image-wrapper img {
-    opacity: 1;
     transition: none;
-    transform: none;
   }
 
   .about-dots span {

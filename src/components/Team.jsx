@@ -7,19 +7,19 @@ const leaders = [
     number: "01",
     name: "Rashid Amao",
     role: "Chairman",
-    image: "/images/team/rashid-amao.jpg",
+    image: "/images/team1.png",
   },
   {
     number: "02",
     name: "Musa Asaka Yusuf",
     role: "Managing Director",
-    image: "/images/team/musa-asaka-yusuf.jpg",
+    image: "/images/MUSA-YUSUF-ASAKA-MANAGING-DIRECTOR.jpeg",
   },
   {
     number: "03",
     name: "Chibuike David Oparaji",
     role: "Deputy Managing Director",
-    image: "/images/team/chibuike-oparaji.jpg",
+    image: "/images/CHIBUIKE-OPARAJI-DEPUTY-MANAGING-DIRECTOR.jpeg",
   },
   {
     number: "04",
