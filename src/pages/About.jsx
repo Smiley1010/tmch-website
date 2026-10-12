@@ -1,448 +1,377 @@
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  ShieldCheck,
+  Leaf,
+  HardHat,
+  Recycle,
+  Target,
+  Eye,
+  CheckCircle2,
+} from "lucide-react";
+
 import "./About.css";
 
+const expertise = [
+  {
+    number: "01",
+    icon: ShieldCheck,
+    title: "Environmental Management",
+    description:
+      "Responsible environmental solutions that help organisations manage their impact and maintain operational standards.",
+  },
+  {
+    number: "02",
+    icon: HardHat,
+    title: "Industrial Services",
+    description:
+      "Practical industrial support designed around operational demands, safety requirements and reliable delivery.",
+  },
+  {
+    number: "03",
+    icon: Recycle,
+    title: "Waste Management",
+    description:
+      "Structured waste handling and management solutions focused on responsible practices and environmental care.",
+  },
+  {
+    number: "04",
+    icon: Leaf,
+    title: "Environmental Remediation",
+    description:
+      "Environmental support services that contribute to cleaner sites and more responsible industrial operations.",
+  },
+  {
+    number: "05",
+    icon: Target,
+    title: "Project Support",
+    description:
+      "Coordinated project services built around client requirements, planning and dependable execution.",
+  },
+  {
+    number: "06",
+    icon: CheckCircle2,
+    title: "Quality and HSE",
+    description:
+      "A commitment to safe working practices, quality delivery and continual improvement across our operations.",
+  },
+];
+
+const statistics = [
+  { value: "2007", label: "Year established" },
+  { value: "15+", label: "Years of experience" },
+  { value: "06", label: "Core service areas" },
+];
+
 function About() {
-  const pageRef = useRef(null);
-
-  useEffect(() => {
-    const page = pageRef.current;
-
-    if (!page) return;
-
-    const elements = page.querySelectorAll(".about-page-reveal");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-      }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => {
-      elements.forEach((element) => observer.unobserve(element));
-    };
-  }, []);
-
   return (
+    <main className="about-page">
+      {/* HERO */}
+      <section className="about-hero">
+        <div className="about-hero-image">
+          <img
+            src="/images/about-hero.jpg"
+            alt="Industrial construction and environmental operations"
+          />
+        </div>
 
-      <main className="about-page" ref={pageRef}>
+        <div className="about-hero-overlay" />
 
-        {/* =========================================
-            HERO
-        ========================================= */}
-
-        <section className="about-page-hero">
-
-          <div className="about-page-hero-dots">
-            {Array.from({ length: 56 }).map((_, index) => (
-              <span key={index}></span>
-            ))}
+        <div className="about-hero-content">
+          <div className="about-eyebrow">
+            <span />
+            ABOUT TMCH GROUP
           </div>
 
-          <div className="about-page-hero-content about-page-reveal">
+          <h1>
+            Championing
+            <br />
+            <span>sustainability</span>
+            <br />
+            since 2007.
+          </h1>
 
-            <div className="about-page-label">
-              <span></span>
-              ABOUT TMCH
-            </div>
+          <p>
+            Delivering environmental, industrial and construction solutions
+            with a commitment to quality, sustainability and responsible
+            operations.
+          </p>
 
-            <h1>
-              Championing
-              <br />
-              <span>sustainability</span>
-              <br />
-              since 2007.
-            </h1>
+          <a href="#about-story" className="about-hero-link">
+            Discover TMCH
+            <ArrowDownRight size={19} />
+          </a>
+        </div>
 
-            <p>
-              Leading environmental solutions for the oil and gas
-              industry, with a commitment to quality, sustainability
-              and responsible operations.
-            </p>
+        <div className="about-hero-bottom">
+          <span>ENVIRONMENTAL · INDUSTRIAL · CONSTRUCTION</span>
+          <span>EST. 2007</span>
+        </div>
+      </section>
 
+      {/* COMPANY INTRODUCTION */}
+      <section className="about-story" id="about-story">
+        <div className="about-story-inner">
+          <div className="about-section-index">
+            <span>01</span>
+            <span className="about-index-line" />
+            <span>WHO WE ARE</span>
           </div>
 
-          <div className="about-page-hero-image about-page-reveal">
-
-            <img
-              src="/images/about/tmch-about-hero.jpg"
-              alt="TMCH Group environmental operations"
-            />
-
-            <div className="about-page-hero-image-overlay"></div>
-
-            <div className="about-page-hero-image-label">
-              <span>TMCH GROUP LIMITED</span>
-              <span>EST. 2007</span>
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            WHO WE ARE
-        ========================================= */}
-
-        <section className="about-page-who">
-
-          <div className="about-page-who-inner">
-
-            <div className="about-page-section-number about-page-reveal">
-              01
-            </div>
-
-            <div className="about-page-who-content">
-
-              <div className="about-page-small-label about-page-reveal">
-                WHO WE ARE
-              </div>
-
-              <h2 className="about-page-reveal">
-                Leading environmental
-                <br />
-                solutions for the
-                <br />
-                <span>oil & gas industry.</span>
-              </h2>
-
-              <p className="about-page-reveal">
-                TMCH Group Limited is committed to providing
-                comprehensive solutions across environmental,
-                industrial and related services, with sustainability
-                and innovation at the heart of its operations.
-              </p>
-
-              <p className="about-page-reveal">
-                With a legacy spanning over 15 years, TMCH has
-                developed expertise in environmental management,
-                waste management and other specialized services
-                supporting the oil and gas industry.
-              </p>
-
-            </div>
-
-            <div className="about-page-who-image about-page-reveal">
-
-              <img
-                src="/images/about/tmch-about-field.jpg"
-                alt="TMCH environmental field operations"
-              />
-
-              <div className="about-page-image-caption">
-                <span>ENVIRONMENTAL OPERATIONS</span>
-                <span>TMCH / 01</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            EXPERTISE
-        ========================================= */}
-
-        <section className="about-page-expertise">
-
-          <div className="about-page-expertise-header about-page-reveal">
-
-            <div className="about-page-small-label">
-              OUR EXPERTISE
-            </div>
+          <div className="about-story-copy">
+            <p className="about-kicker">OUR COMPANY</p>
 
             <h2>
-              Solutions built around
+              Built around
               <br />
-              <span>real environmental challenges.</span>
+              <span>responsible progress.</span>
             </h2>
 
-            <p>
-              Our range of services addresses critical environmental
-              and operational requirements across the industries we
-              serve.
+            <p className="about-body">
+              TMCH Group Limited provides environmental, industrial and
+              construction-related services for demanding operating
+              environments. Our approach is centred on understanding client
+              needs, working responsibly and delivering practical solutions.
             </p>
 
-          </div>
-
-
-          <div className="about-page-expertise-grid">
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>01</span>
-              <h3>Waste Management</h3>
-              <p>
-                Specialized waste management solutions designed
-                to support responsible handling and disposal.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>02</span>
-              <h3>Vessel Tank Cleaning</h3>
-              <p>
-                Specialized services supporting safe and effective
-                vessel and tank cleaning operations.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>03</span>
-              <h3>Hazardous Waste Handling</h3>
-              <p>
-                Responsible handling of hazardous materials with
-                environmental protection and compliance in mind.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>04</span>
-              <h3>Remediation</h3>
-              <p>
-                Environmental remediation solutions focused on
-                restoring affected environments.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>05</span>
-              <h3>Oil Spill Clean-Up</h3>
-              <p>
-                Response and recovery solutions supporting effective
-                oil spill management.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-            <article className="about-expertise-card about-page-reveal">
-              <span>06</span>
-              <h3>Environmental Compliance</h3>
-              <p>
-                Supporting clients in navigating environmental
-                requirements and regulatory expectations.
-              </p>
-              <ArrowUpRight size={20} />
-            </article>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            SUSTAINABILITY
-        ========================================= */}
-
-        <section className="about-page-sustainability">
-
-          <div className="about-page-sustainability-image about-page-reveal">
-
-            <img
-              src="/images/about/tmch-about-vessel.jpg"
-              alt="TMCH marine environmental operations"
-            />
-
-          </div>
-
-          <div className="about-page-sustainability-content">
-
-            <div className="about-page-small-label about-page-reveal">
-              OUR COMMITMENT
-            </div>
-
-            <h2 className="about-page-reveal">
-              Environmental
-              <br />
-              responsibility meets
-              <br />
-              <span>operational efficiency.</span>
-            </h2>
-
-            <p className="about-page-reveal">
-              TMCH is focused on delivering solutions that support
-              environmental stewardship while helping clients
-              maintain efficient and responsible operations.
+            <p className="about-body">
+              Since our establishment in 2007, we have continued to build
+              our identity around professional service, operational
+              discipline and a commitment to quality.
             </p>
 
-            <p className="about-page-reveal">
-              From waste reduction and oil spill recovery to
-              eco-conscious disposal methods, our approach is
-              centred on creating practical solutions for a cleaner,
-              greener future.
-            </p>
-
-            <a
-              href="/contact"
-              className="about-page-outline-link about-page-reveal"
-            >
-              Work With TMCH
+            <a href="/services" className="about-text-link">
+              Explore our services
               <ArrowUpRight size={18} />
             </a>
-
           </div>
 
-        </section>
+          <div className="about-story-visual">
+            <img
+              src="/images/about-story.jpg"
+              alt="Industrial field operations"
+              loading="lazy"
+            />
 
-
-        {/* =========================================
-            MISSION / VISION
-        ========================================= */}
-
-        <section className="about-page-mission">
-
-          <div className="about-page-mission-header about-page-reveal">
-
-            <div className="about-page-small-label">
-              WHAT DRIVES US
+            <div className="about-image-caption">
+              <span>01 / OUR APPROACH</span>
+              <span>Built on responsibility</span>
             </div>
+
+            <div className="about-story-accent">
+              <span>TMCH</span>
+              <span>GROUP LIMITED</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMPANY VALUES STRIP */}
+      <section className="about-principles">
+        <div className="about-principles-inner">
+          <div>
+            <span className="about-principle-number">01</span>
+            <h3>Integrity</h3>
+            <p>Doing the right thing in every engagement.</p>
+          </div>
+
+          <div>
+            <span className="about-principle-number">02</span>
+            <h3>Quality</h3>
+            <p>Maintaining high standards in our delivery.</p>
+          </div>
+
+          <div>
+            <span className="about-principle-number">03</span>
+            <h3>Safety</h3>
+            <p>Keeping responsible practices at the forefront.</p>
+          </div>
+
+          <div>
+            <span className="about-principle-number">04</span>
+            <h3>Sustainability</h3>
+            <p>Considering the long-term impact of our work.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERTISE */}
+      <section className="about-expertise">
+        <div className="about-expertise-heading">
+          <div>
+            <p className="about-kicker">WHAT WE DO</p>
+            <h2>
+              Expertise for
+              <br />
+              <span>complex environments.</span>
+            </h2>
+          </div>
+
+          <p className="about-expertise-intro">
+            Our capabilities bring together practical services and a
+            responsible approach to the challenges our clients face.
+          </p>
+        </div>
+
+        <div className="about-expertise-grid">
+          {expertise.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <article className="about-expertise-card" key={item.number}>
+                <div className="about-expertise-card-top">
+                  <span>{item.number}</span>
+                  <Icon size={25} strokeWidth={1.5} />
+                </div>
+
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+
+                <span className="about-card-bottom-line" />
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* SUSTAINABILITY FEATURE */}
+      <section className="about-sustainability">
+        <div className="about-sustainability-image">
+          <img
+            src="/images/about-sustainability.jpg"
+            alt="Environmental care and responsible industrial practices"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="about-sustainability-content">
+          <p className="about-kicker">OUR COMMITMENT</p>
+
+          <h2>
+            Progress that
+            <br />
+            respects the
+            <br />
+            <span>environment.</span>
+          </h2>
+
+          <p>
+            We recognise the importance of responsible operations in
+            industrial and construction environments. Our focus is on
+            practical solutions that consider quality, safety and
+            environmental responsibility.
+          </p>
+
+          <a href="/services" className="about-light-link">
+            Learn about our services
+            <ArrowRight size={18} />
+          </a>
+        </div>
+      </section>
+
+      {/* MISSION AND VISION */}
+      <section className="about-purpose">
+        <div className="about-purpose-heading">
+          <p className="about-kicker">WHAT GUIDES US</p>
+          <h2>
+            Our purpose.
+            <br />
+            <span>Our direction.</span>
+          </h2>
+        </div>
+
+        <div className="about-purpose-grid">
+          <article className="about-purpose-card">
+            <div className="about-purpose-top">
+              <span>01 / OUR MISSION</span>
+              <Target size={26} strokeWidth={1.5} />
+            </div>
+
+            <h3>Delivering solutions that make a difference.</h3>
+
+            <p>
+              To provide dependable environmental, industrial and
+              construction-related services through professional delivery,
+              quality practices and a commitment to responsible operations.
+            </p>
+
+            <span className="about-purpose-number">M</span>
+          </article>
+
+          <article className="about-purpose-card about-purpose-card-dark">
+            <div className="about-purpose-top">
+              <span>02 / OUR VISION</span>
+              <Eye size={26} strokeWidth={1.5} />
+            </div>
+
+            <h3>Building trust through responsible progress.</h3>
+
+            <p>
+              To strengthen our position as a trusted service provider,
+              recognised for professionalism, quality and environmental
+              responsibility.
+            </p>
+
+            <span className="about-purpose-number">V</span>
+          </article>
+        </div>
+      </section>
+
+      {/* STATISTICS */}
+      <section className="about-stats">
+        <div className="about-stats-heading">
+          <p className="about-kicker">OUR JOURNEY</p>
+          <h2>
+            Experience with
+            <br />
+            <span>purpose.</span>
+          </h2>
+        </div>
+
+        <div className="about-stats-grid">
+          {statistics.map((stat) => (
+            <div className="about-stat" key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="about-stats-note">
+          Figures and service descriptions should be confirmed against
+          TMCH's official company information before publication.
+        </p>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="about-cta">
+        <div className="about-cta-inner">
+          <div>
+            <p className="about-kicker">LET'S WORK TOGETHER</p>
 
             <h2>
-              Purpose behind
+              Have a project
               <br />
-              <span>the work.</span>
+              <span>in mind?</span>
             </h2>
 
+            <p>
+              Speak with our team about your operational requirements
+              and the services we can provide.
+            </p>
           </div>
 
-
-          <div className="about-page-mission-grid">
-
-            <article className="about-mission-card about-page-reveal">
-
-              <div className="about-mission-card-top">
-                <span>01</span>
-                <span>MISSION</span>
-              </div>
-
-              <h3>
-                Committed to becoming a solution provider of choice
-                in our range of services.
-              </h3>
-
-            </article>
-
-
-            <article className="about-mission-card about-page-reveal">
-
-              <div className="about-mission-card-top">
-                <span>02</span>
-                <span>VISION</span>
-              </div>
-
-              <h3>
-                To be an indigenous company most admired for her
-                Quality of Service.
-              </h3>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            STATS
-        ========================================= */}
-
-        <section className="about-page-stats">
-
-          <div className="about-page-stats-dots">
-            {Array.from({ length: 48 }).map((_, index) => (
-              <span key={index}></span>
-            ))}
-          </div>
-
-          <div className="about-page-stats-header about-page-reveal">
-
-            <div className="about-page-small-label">
-              TMCH BY THE NUMBERS
-            </div>
-
-            <h2>
-              Experience you
-              <br />
-              can <span>measure.</span>
-            </h2>
-
-          </div>
-
-
-          <div className="about-page-stats-grid">
-
-            <div className="about-page-stat about-page-reveal">
-              <strong>13</strong>
-              <span>Expert Staff</span>
-            </div>
-
-            <div className="about-page-stat about-page-reveal">
-              <strong>27</strong>
-              <span>Projects Completed</span>
-            </div>
-
-            <div className="about-page-stat about-page-reveal">
-              <strong>6</strong>
-              <span>Clients Served</span>
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            FINAL CTA
-        ========================================= */}
-
-        <section className="about-page-cta">
-
-          <div className="about-page-cta-dots">
-            {Array.from({ length: 32 }).map((_, index) => (
-              <span key={index}></span>
-            ))}
-          </div>
-
-          <div className="about-page-cta-inner about-page-reveal">
-
-            <div className="about-page-small-label">
-              LET'S WORK TOGETHER
-            </div>
-
-            <h2>
-              Building a cleaner,
-              <br />
-              more sustainable
-              <br />
-              <span>future.</span>
-            </h2>
-
-            <a href="/contact">
-              Get A Quote
-              <ArrowUpRight size={19} />
-            </a>
-
-          </div>
-
-        </section>
-
-      </main>
-      );
+          <a href="/contact" className="about-cta-button">
+            Contact our team
+            <ArrowUpRight size={20} />
+          </a>
+        </div>
+      </section>
+    </main>
+  );
 }
 
 export default About;

@@ -126,7 +126,7 @@ function Services() {
 
         <div className="services-page-hero-image">
           <img
-            src="/images/services/services-hero.jpg"
+            src="/images/services-hero.jpg"
             alt="TMCH industrial operations"
           />
 

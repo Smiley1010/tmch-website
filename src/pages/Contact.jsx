@@ -88,10 +88,7 @@ function Contact() {
               how TMCH can help.
             </p>
 
-            <a href="#contact-form" className="contact-hero-link">
-              Start a conversation
-              <ArrowDownRight size={19} />
-            </a>
+          
           </div>
         </div>
 
