@@ -128,7 +128,7 @@
 }
 
 .projects-label span {
-  background: var(--tmch-blue);
+  background: #0878ff;
 }
 
 .projects-heading {
@@ -158,7 +158,7 @@
 }
 
 .projects-heading h2 span {
-  color: var(--tmch-blue);
+  color:#0878ff;
 }
 
 .projects-heading p {
@@ -221,7 +221,7 @@
 .project-card:hover {
   transform: translateY(-6px);
 
-  border-color: rgba(8, 120, 255, 0.45);
+  border-color: #0878ff;
 
   box-shadow:
     0 22px 45px rgba(0, 0, 0, 0.22);
@@ -303,34 +303,7 @@
    PROJECT NUMBER
 ========================================= */
 
-.project-card-number {
-  position: absolute;
 
-  top: 17px;
-  left: 17px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 38px;
-  height: 38px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.95);
-
-  color: var(--tmch-blue);
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 0.67rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.04em;
-}
 
 
 /* =========================================
@@ -465,7 +438,7 @@
 }
 
 .project-card-content a:hover {
-  color: var(--tmch-blue);
+  color: #0878ff;
 
   gap: 12px;
 }

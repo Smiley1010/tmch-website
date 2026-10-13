@@ -1,84 +1,74 @@
 
-import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import "./AboutIntro.css";
 
 const capabilities = [
   {
-    number: "01",
     title: "Environmental Solutions",
     description:
-      "Environmental compliance monitoring, waste management, soil remediation and oil-spill clean-up to help protect ecosystems and meet environmental requirements.",
+      "Sustainable environmental solutions, waste management and responsible practices designed to protect the environment and create lasting value.",
   },
   {
-    number: "02",
     title: "Industrial Services",
     description:
       "Vessel tank cleaning, hazardous waste transportation and industrial waste handling to support safer, more efficient operations.",
   },
   {
-    number: "03",
     title: "Construction Solutions",
     description:
-      "Civil construction and infrastructure development services supporting the delivery of functional, durable industrial and commercial facilities.",
+      "Professional construction services focused on quality workmanship, precision, safety and dependable project delivery.",
   },
   {
-    number: "04",
     title: "Technical Expertise",
     description:
-      "Laboratory testing, environmental assessments, sampling and technical support to help organisations make informed operational decisions.",
+      "Specialist technical knowledge and practical expertise to plan, manage and deliver complex projects effectively.",
   },
 ];
 
-function AboutIntro() {
+export default function AboutIntro() {
   const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     const section = sectionRef.current;
+
     if (!section) return;
 
-    const elements = section.querySelectorAll(".about-reveal");
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
-    elements.forEach((element) => observer.observe(element));
+    observer.observe(section);
 
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      className="about-intro"
-      id="about"
       ref={sectionRef}
+      className={`about-intro ${isVisible ? "is-visible" : ""}`}
     >
-      <div className="about-dots about-dots-top about-reveal">
-        {Array.from({ length: 64 }).map((_, index) => (
-          <span key={index}></span>
+      {/* Decorative dots behind the image */}
+      <div className="about-dots about-dots-top" aria-hidden="true">
+        {Array.from({ length: 40 }, (_, index) => (
+          <span key={index} />
         ))}
       </div>
 
-      <div className="about-dots about-dots-bottom about-reveal">
-        {Array.from({ length: 64 }).map((_, index) => (
-          <span key={index}></span>
-        ))}
-      </div>
-
-      <div className="about-container">
-        <div className="about-content about-reveal">
-          <div className="section-label dark-label">
-            <span></span>
-            01 / WHO WE ARE
+      {/* Main introduction */}
+      <div className="about-intro-content">
+        <div className="about-intro-heading">
+          <div className="about-eyebrow">
+            <span className="about-eyebrow-line" />
+            <span>01 / WHO WE ARE</span>
           </div>
 
           <h2>
@@ -90,19 +80,19 @@ function AboutIntro() {
           </h2>
 
           <p>
-            TMCH Group delivers integrated environmental, industrial
-            and construction solutions designed to solve complex
-            challenges and create lasting value.
+            TMCH Group delivers integrated environmental, industrial and
+            construction solutions designed to solve complex challenges and
+            create lasting value.
           </p>
         </div>
 
-        <div className="about-visual about-reveal">
+        {/* Construction image */}
+        <div className="about-intro-visual">
           <div className="about-image-wrapper">
             <img
               src="/images/aboutinfo.png"
-              alt="TMCH Group personnel carrying out industrial operations"
+              alt="TMCH Group construction and industrial operations"
             />
-            <div className="about-image-overlay"></div>
           </div>
 
           <div className="about-image-label">
@@ -112,41 +102,59 @@ function AboutIntro() {
         </div>
       </div>
 
-      <div className="about-stats about-reveal">
-        {capabilities.map((capability, index) => (
-          <button
-            type="button"
-            className={`about-stat ${
-              activeCard === index ? "is-active" : ""
-            }`}
-            key={capability.number}
-            aria-expanded={activeCard === index}
-            onClick={() =>
-              setActiveCard((current) =>
-                current === index ? null : index
-              )
-            }
-          >
-            <span className="about-stat-number">
-              {capability.number}
-            </span>
+      {/* Four capability cards */}
+      <div className="about-stats">
+        {capabilities.map((item, index) => {
+          const isActive = activeCard === index;
 
-            <span className="about-stat-title">
-              {capability.title}
-            </span>
+          return (
+            <button
+              type="button"
+              key={item.title}
+              className={`about-stat ${isActive ? "is-active" : ""}`}
+              aria-expanded={isActive}
+              onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
+              onFocus={() => setActiveCard(index)}
+              onBlur={() => setActiveCard(null)}
+              onClick={() =>
+                setActiveCard((current) =>
+                  current === index ? null : index
+                )
+              }
+            >
+              <span className="about-stat-number">
+                0{index + 1}
+              </span>
 
-            <span className="about-stat-description">
-              {capability.description}
-            </span>
+              <ArrowUpRight
+                className="about-stat-arrow"
+                size={21}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
 
-            <span className="about-stat-arrow" aria-hidden="true">
-              <ArrowUpRight size={18} />
-            </span>
-          </button>
+              <h3 className="about-stat-title">
+                {item.title}
+              </h3>
+
+              <p className="about-stat-description">
+                {item.description}
+              </p>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Bottom-right decorative dots */}
+      <div
+        className="about-dots about-dots-bottom"
+        aria-hidden="true"
+      >
+        {Array.from({ length: 8 }, (_, index) => (
+          <span key={index} />
         ))}
       </div>
     </section>
   );
 }
-
-export default AboutIntro;

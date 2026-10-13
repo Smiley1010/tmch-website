@@ -25,7 +25,7 @@ const services = [
     category: "ENVIRONMENTAL",
     description:
       "Environmental testing and product quality control supported by professional laboratory services and analytical capabilities.",
-    image: "/images/lab-services.jpg",
+    image: "/images/lab-services.png",
   },
   {
     number: "04",
@@ -41,7 +41,7 @@ const services = [
     category: "REMEDIATION",
     description:
       "Remediation and oil spill response solutions designed to protect ecosystems, restore affected environments and support regulatory compliance.",
-    image: "/images/services/remediation.jpg",
+    image: "/images/soil-clean-up.jpg",
   },
   {
     number: "06",
@@ -49,7 +49,7 @@ const services = [
     category: "CONSTRUCTION",
     description:
       "Civil engineering and construction solutions focused on sustainability, efficiency, quality and timely project delivery.",
-    image: "/images/services/civil-construction.jpg",
+    image: "/images/civil-construction-services.png",
   },
   {
     number: "07",
@@ -57,7 +57,7 @@ const services = [
     category: "EQUIPMENT",
     description:
       "Heavy equipment rental solutions supporting construction, industrial and infrastructure projects.",
-    image: "/images/services/heavy-equipment.jpg",
+    image: "/images/heavy-duty-leasing.png",
   },
   {
     number: "08",
@@ -65,7 +65,7 @@ const services = [
     category: "ENERGY",
     description:
       "Solar street lighting solutions designed to meet community and infrastructure lighting needs using sustainable energy.",
-    image: "/images/services/solar-street-light.jpg",
+    image: "/images/solar-light.png",
   },
   {
     number: "09",
@@ -73,7 +73,7 @@ const services = [
     category: "PROCUREMENT",
     description:
       "Procurement and logistics support helping clients navigate sourcing, supply chain and delivery requirements.",
-    image: "/images/services/procurement.jpg",
+    image: "/images/procurement-logistics.jpg",
   },
   {
     number: "10",
@@ -81,7 +81,7 @@ const services = [
     category: "ENVIRONMENTAL",
     description:
       "Wastewater collection and treatment solutions focused on environmental stewardship and responsible resource management.",
-    image: "/images/services/sewage-treatment.jpg",
+    image: "/images/sewage-treatment.png",
   },
 ];
 
@@ -301,7 +301,7 @@ function Services() {
         <div className="services-page-featured-image services-page-reveal">
 
           <img
-            src="/images/services/shoreline-remediation.jpg"
+            src="/images/featured-capability.png"
             alt="TMCH shoreline and swamp remediation"
           />
 

@@ -1,214 +1,115 @@
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+
+import React from "react";
 import "./Services.css";
 
 const services = [
   {
-    number: "01",
-    title: "Environmental\nSolutions",
+    title: "Vessel Tank Cleaning Services",
     description:
-      "Integrated environmental solutions focused on protecting ecosystems, managing environmental challenges and supporting sustainable operations.",
-    image: "/images/services/environmental.jpg",
+      "Our expert team specializes in comprehensive vessel tank cleaning services tailored to meet your specific needs.",
+    image: "/images/vessel-tank-cleaning-service.jpg",
+    imageAlt: "Industrial vessel and storage tank cleaning operations",
+    slug: "vessel-storage-tank-cleaning",
   },
   {
-    number: "02",
-    title: "Industrial\nServices",
+    title: "Environmental Compliance Monitoring",
     description:
-      "Specialized industrial services supporting safe, efficient and reliable operations across complex industrial environments.",
-    image: "/images/services/industrial.jpg",
+      "We specialize in comprehensive environmental compliance monitoring services tailored to meet your specific industry requirements.",
+    image: "/images/env-compliance-monitoring-service.jpg",
+    imageAlt: "Environmental specialist collecting samples at an industrial site",
+    slug: "environmental-compliance-monitoring",
   },
   {
-    number: "03",
-    title: "Construction\nSolutions",
+    title: "Soil Remediation and Oil Spill Clean-up Services",
     description:
-      "Construction and infrastructure solutions delivered with precision, quality and a focus on long-term performance.",
-    image: "/images/services/construction.jpg",
+      "With extensive experience in remediation techniques and regulatory compliance, we offer prompt and effective solutions to safeguard ecosystems and public health.",
+    image: "/images/soil-clean-up.jpg",
+    imageAlt: "Environmental remediation and oil spill clean-up operations",
+    slug: "soil-remediation-oil-spill-clean-up",
   },
   {
-    number: "04",
-    title: "Waste\nManagement",
+    title: "Heavy Duty Equipment Leasing",
     description:
-      "Responsible waste management solutions helping organizations handle, process and manage waste efficiently.",
-    image: "/images/services/waste.jpg",
-  },
-  {
-    number: "05",
-    title: "Technical\nServices",
-    description:
-      "Technical expertise and specialized support for demanding environmental, industrial and infrastructure requirements.",
-    image: "/images/services/technical.jpg",
-  },
-  {
-    number: "06",
-    title: "Procurement &\nLogistics",
-    description:
-      "Procurement and logistics support connecting projects with the equipment, materials and resources they need.",
-    image: "/images/services/logistics.jpg",
+      "We specialize in providing top-of-the-line heavy equipment rentals to meet the demands of construction, industrial, and infrastructure projects.",
+    image: "/images/heavy-duty-equipment-leasing.jpg",
+    imageAlt: "Heavy-duty equipment at an industrial construction site",
+    slug: "heavy-duty-equipment-leasing",
   },
 ];
 
-function Services() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) return;
-
-    const elements = section.querySelectorAll(".services-reveal");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-      }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => {
-      elements.forEach((element) => observer.unobserve(element));
-    };
-  }, []);
-
+export default function Services() {
   return (
-    <section
-      className="services-section"
-      id="services"
-      ref={sectionRef}
-    >
-      {/* =================================
-          BLUE DOT FIELD
-      ================================= */}
-
-      <div className="services-dots services-dots-top services-reveal">
-        {Array.from({ length: 54 }).map((_, index) => (
-          <span key={index}></span>
-        ))}
-      </div>
-
-      <div className="services-dots services-dots-bottom services-reveal">
-        {Array.from({ length: 42 }).map((_, index) => (
-          <span key={index}></span>
-        ))}
-      </div>
-
+    <section className="services-section" id="services">
       <div className="services-container">
+        <div className="services-heading">
+          <div className="services-heading-copy">
+            <span className="services-eyebrow">
+              <span className="services-eyebrow-line" />
+              WHAT WE DO
+            </span>
 
-        {/* =================================
-            SECTION HEADER
-        ================================= */}
-
-        <div className="services-header services-reveal">
-          <div className="section-label services-label">
-            <span></span>
-            02 / OUR SERVICES
+            <h2>
+              Our Range of
+              <br />
+              <span>Services.</span>
+            </h2>
           </div>
 
-          <div className="services-heading">
-            <h2>
-              Built to solve
-              <br />
-              <span>complex challenges.</span>
-            </h2>
-
+          <div className="services-intro">
             <p>
-              From environmental management to industrial operations
-              and construction, TMCH Group provides integrated
-              solutions designed around the demands of each project.
+              We provide specialized environmental, industrial, and
+              equipment solutions to support demanding operations
+              with a focus on safety, quality, and sustainability.
             </p>
+
+            <a href="/services" className="services-all-link">
+              <span>Explore all services</span>
+              <span className="services-link-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
           </div>
         </div>
 
-        {/* =================================
-            SERVICES GRID
-        ================================= */}
-
         <div className="services-grid">
-          {services.map((service, index) => (
-            <article
-              className="service-card services-reveal"
-              key={service.number}
-              style={{
-                transitionDelay: `${index * 0.08}s`,
-              }}
-            >
-              {/* IMAGE */}
-
-              <div className="service-image">
-                <img
-                  src={service.image}
-                  alt={service.title.replace("\n", " ")}
-                />
-
-                <div className="service-image-overlay"></div>
-
-                <span className="service-image-number">
-                  {service.number}
-                </span>
-
-                <span className="service-image-arrow">
-                  <ArrowUpRight
-                    size={20}
-                    strokeWidth={1.8}
+          {services.map((service) => (
+            <article className="service-card" key={service.slug}>
+              <a
+                className="service-card-link"
+                href={`/services/${service.slug}`}
+                aria-label={`Learn more about ${service.title}`}
+              >
+                <div className="service-image-wrap">
+                  <img
+                    className="service-image"
+                    src={service.image}
+                    alt={service.imageAlt}
+                    loading="lazy"
                   />
-                </span>
-              </div>
-
-              {/* CONTENT */}
-
-              <div className="service-card-content">
-
-                <div className="service-card-heading">
-                  <h3>
-                    {service.title.split("\n").map((line, i) => (
-                      <span key={i}>
-                        {line}
-
-                        {i !== service.title.split("\n").length - 1 && (
-                          <br />
-                        )}
-                      </span>
-                    ))}
-                  </h3>
                 </div>
 
-                <p>{service.description}</p>
+                <div className="service-card-content">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
 
-              </div>
-
-              <div className="service-card-line"></div>
+                  <span className="service-learn-more">
+                    Learn more
+                    <span aria-hidden="true"> →</span>
+                  </span>
+                </div>
+              </a>
             </article>
           ))}
         </div>
 
-        {/* =================================
-            FOOTER CTA
-        ================================= */}
-
-        <div className="services-footer services-reveal">
-          <span>
-            Explore our full range of capabilities
-          </span>
-
-          <a href="/services">
-            View All Services
-            <ArrowUpRight
-              size={17}
-              strokeWidth={1.8}
-            />
-          </a>
+        <div className="services-bottom">
+          <span className="services-bottom-line" />
+          <p>
+            Environmental responsibility. Industrial expertise.
+            Reliable solutions.
+          </p>
         </div>
-
       </div>
     </section>
   );
 }
-
-export default Services;

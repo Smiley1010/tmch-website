@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import "./Testimonials.css";
 
 const testimonials = [
@@ -11,134 +10,141 @@ const testimonials = [
   },
   {
     quote:
-      "The team showed a clear understanding of our requirements and approached the project with a focus on safety, efficiency and reliable service delivery.",
+      "The team demonstrated a clear understanding of our requirements and maintained a professional approach throughout the project. Communication was consistent, and the work was handled with attention to detail.",
     name: "Client Representative",
-    role: "Industrial Services",
+    role: "Infrastructure Development",
   },
   {
     quote:
-      "Working with a team that values professionalism, communication and quality makes a real difference. TMCH understands the importance of delivering dependable solutions.",
+      "TMCH provided dependable support and demonstrated a strong commitment to safety, quality, and timely delivery. We appreciated the team's practical approach and professionalism.",
     name: "Client Representative",
-    role: "Project Services",
+    role: "Technical & Engineering Services",
   },
 ];
 
-function Testimonials() {
+export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState("slide-left");
+  const testimonial = testimonials[activeIndex];
 
-  const changeSlide = (newIndex, slideDirection) => {
-    setDirection(slideDirection);
-    setActiveIndex(newIndex);
-  };
-
-  const previousSlide = () => {
-    changeSlide(
-      activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1,
-      "slide-left"
+  const previousTestimonial = () => {
+    setActiveIndex((current) =>
+      current === 0 ? testimonials.length - 1 : current - 1
     );
   };
 
-  const nextSlide = () => {
-    changeSlide(
-      activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1,
-      "slide-right"
+  const nextTestimonial = () => {
+    setActiveIndex((current) =>
+      current === testimonials.length - 1 ? 0 : current + 1
     );
   };
-
-  const active = testimonials[activeIndex];
 
   return (
-    <section className="testimonials-section" id="testimonials">
+    <section className="testimonials-section">
       <div className="testimonials-container">
         <div className="testimonials-heading">
-          <div className="testimonials-label">
-            <span />
-            CLIENT TESTIMONIALS
+          <div className="testimonials-eyebrow">
+            <span className="testimonials-eyebrow-line" />
+            <span>CLIENT TESTIMONIALS</span>
           </div>
 
           <h2>
             Built on <span>trust.</span>
           </h2>
 
-          <p>Strong partnerships. Meaningful results.</p>
+          <p className="testimonials-subtitle">
+            Strong partnerships. Meaningful results.
+          </p>
         </div>
 
-        <div className="testimonial-stage">
-          <button
-            type="button"
-            className="testimonial-arrow testimonial-arrow-left"
-            onClick={previousSlide}
-            aria-label="Previous testimonial"
+        <div className="testimonial-layout">
+          <article
+            className="testimonial-card"
+            key={activeIndex}
           >
-            <ArrowLeft size={21} />
-          </button>
+            <div className="testimonial-quote-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <path
+                  d="M18 25H9V13a4 4 0 0 1 4-4h5v16Zm21 0h-9V13a4 4 0 0 1 4-4h5v16Z"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  transform="translate(0 3)"
+                />
+                <path
+                  d="M9 25c0 6-2 9-5 12M30 25c0 6-2 9-5 12"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  transform="translate(4 -1)"
+                />
+              </svg>
+            </div>
 
-          <div className="testimonial-card">
-            <div
-              className={`testimonial-content ${direction}`}
-              key={activeIndex}
+            <p className="testimonial-quote">
+              “{testimonial.quote}”
+            </p>
+
+            <div className="testimonial-divider" />
+
+            <div className="testimonial-author">
+              <h3>{testimonial.name}</h3>
+              <p>{testimonial.role}</p>
+            </div>
+
+            <div className="testimonial-pagination">
+              {testimonials.map((item, index) => (
+                <button
+                  key={item.role}
+                  type="button"
+                  className={`testimonial-dot ${
+                    index === activeIndex ? "active" : ""
+                  }`}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`View testimonial ${index + 1}`}
+                  aria-current={index === activeIndex ? "true" : undefined}
+                />
+              ))}
+            </div>
+          </article>
+
+          <div className="testimonial-navigation">
+            <button
+              className="testimonial-arrow"
+              onClick={previousTestimonial}
+              aria-label="Previous testimonial"
+              type="button"
             >
-              <Quote
-                className="testimonial-quote-icon"
-                size={36}
-                strokeWidth={1.5}
-              />
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M19 12H5m7 7-7-7 7-7"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
 
-              <p className="testimonial-quote">
-                “{active.quote}”
-              </p>
-
-              <div className="testimonial-divider" />
-
-              <h3 className="testimonial-name">{active.name}</h3>
-              <p className="testimonial-role">{active.role}</p>
-            </div>
-
-            <div className="testimonial-footer">
-              <span className="testimonial-count">
-                {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                {String(testimonials.length).padStart(2, "0")}
-              </span>
-
-              <div className="testimonial-dots">
-                {testimonials.map((item, index) => (
-                  <button
-                    key={item.role}
-                    type="button"
-                    className={`testimonial-dot ${
-                      activeIndex === index ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      changeSlide(
-                        index,
-                        index < activeIndex
-                          ? "slide-left"
-                          : "slide-right"
-                      )
-                    }
-                    aria-label={`Go to testimonial ${index + 1}`}
-                    aria-current={
-                      activeIndex === index ? "true" : undefined
-                    }
-                  />
-                ))}
-              </div>
-            </div>
+            <button
+              className="testimonial-arrow"
+              onClick={nextTestimonial}
+              aria-label="Next testimonial"
+              type="button"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 12h14m-7-7 7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
-
-          <button
-            type="button"
-            className="testimonial-arrow testimonial-arrow-right"
-            onClick={nextSlide}
-            aria-label="Next testimonial"
-          >
-            <ArrowRight size={21} />
-          </button>
         </div>
       </div>
     </section>
   );
 }
-
-export default Testimonials;

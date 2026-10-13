@@ -10,7 +10,7 @@ import {
   Eye,
   CheckCircle2,
 } from "lucide-react";
-
+import { useEffect, useRef } from "react";
 import "./About.css";
 
 const expertise = [
@@ -65,8 +65,42 @@ const statistics = [
 ];
 
 function About() {
+
+  const pageRef = useRef(null);
+
+useEffect(() => {
+  const page = pageRef.current;
+  if (!page) return;
+
+  const elements = page.querySelectorAll(".about-reveal");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    elements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px",
+    }
+  );
+
+  elements.forEach((element) => observer.observe(element));
+
+  return () => observer.disconnect();
+}, []);
+
   return (
-    <main className="about-page">
+   <main className="about-page" ref={pageRef}>
       {/* HERO */}
       <section className="about-hero">
         <div className="about-hero-image">
@@ -110,91 +144,138 @@ function About() {
         </div>
       </section>
 
-      {/* COMPANY INTRODUCTION */}
-      <section className="about-story" id="about-story">
-        <div className="about-story-inner">
-          <div className="about-section-index">
-            <span>01</span>
-            <span className="about-index-line" />
-            <span>WHO WE ARE</span>
-          </div>
 
-          <div className="about-story-copy">
-            <p className="about-kicker">OUR COMPANY</p>
+{/* COMPANY INTRODUCTION */}
+<section className="about-story" id="about-story">
+  <div className="about-story-inner">
+    <div className="about-story-copy">
+      <div className="about-section-index">
+        <span></span>
+        <span className="about-index-line" />
+        <span>WHO WE ARE</span>
+      </div>
 
-            <h2>
-              Built around
-              <br />
-              <span>responsible progress.</span>
-            </h2>
+      <div className="about-story-text">
+        <h2>
+          Built around
+          <br />
+          <span>responsible progress.</span>
+        </h2>
 
-            <p className="about-body">
-              TMCH Group Limited provides environmental, industrial and
-              construction-related services for demanding operating
-              environments. Our approach is centred on understanding client
-              needs, working responsibly and delivering practical solutions.
-            </p>
+        <p className="about-body">
+          TMCH Group Limited provides environmental, industrial and
+          construction-related services for demanding operating
+          environments. Our approach is centred on understanding client
+          needs, working responsibly and delivering practical solutions.
+        </p>
 
-            <p className="about-body">
-              Since our establishment in 2007, we have continued to build
-              our identity around professional service, operational
-              discipline and a commitment to quality.
-            </p>
+        <p className="about-body">
+          Since our establishment in 2007, we have continued to build
+          our identity around professional service, operational
+          discipline and a commitment to quality.
+        </p>
 
-            <a href="/services" className="about-text-link">
-              Explore our services
-              <ArrowUpRight size={18} />
-            </a>
-          </div>
+        <a href="/services" className="about-text-link">
+          Explore our services
+          <ArrowUpRight size={18} />
+        </a>
+      </div>
+    </div>
 
-          <div className="about-story-visual">
-            <img
-              src="/images/about-story.jpg"
-              alt="Industrial field operations"
-              loading="lazy"
-            />
+    <div className="about-story-visual">
+      <img
+        src="/images/who-we-are.png"
+        alt="Industrial field operations"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
 
-            <div className="about-image-caption">
-              <span>01 / OUR APPROACH</span>
-              <span>Built on responsibility</span>
-            </div>
 
-            <div className="about-story-accent">
-              <span>TMCH</span>
-              <span>GROUP LIMITED</span>
-            </div>
-          </div>
+    
+{/* CORE VALUES */}
+<section className="about-values" id="about-values">
+  <div className="about-values-inner">
+    <div className="about-values-heading about-reveal">
+      <div className="about-values-heading-left">
+        <span className="about-values-eyebrow"> OUR VALUES</span>
+        <h2>
+          What guides <span>us.</span>
+        </h2>
+      </div>
+
+      <p>
+        The principles behind every project, partnership and service
+        we deliver. They shape how we work, how we collaborate and
+        the standards we uphold.
+      </p>
+    </div>
+
+    <div className="about-values-grid">
+      <article className="about-value-card about-reveal">
+        <div className="about-value-top">
+          <span className="about-value-number">01</span>
+          <span className="about-value-label">TRUST</span>
         </div>
-      </section>
-
-      {/* COMPANY VALUES STRIP */}
-      <section className="about-principles">
-        <div className="about-principles-inner">
-          <div>
-            <span className="about-principle-number">01</span>
-            <h3>Integrity</h3>
-            <p>Doing the right thing in every engagement.</p>
-          </div>
-
-          <div>
-            <span className="about-principle-number">02</span>
-            <h3>Quality</h3>
-            <p>Maintaining high standards in our delivery.</p>
-          </div>
-
-          <div>
-            <span className="about-principle-number">03</span>
-            <h3>Safety</h3>
-            <p>Keeping responsible practices at the forefront.</p>
-          </div>
-
-          <div>
-            <span className="about-principle-number">04</span>
-            <h3>Sustainability</h3>
-            <p>Considering the long-term impact of our work.</p>
-          </div>
+        <div className="about-value-content">
+          <h3>Integrity</h3>
+          <p>
+            We act with honesty, transparency and accountability
+            in every engagement.
+          </p>
         </div>
-      </section>
+   
+      </article>
+
+      <article className="about-value-card about-reveal">
+        <div className="about-value-top">
+          <span className="about-value-number">02</span>
+          <span className="about-value-label">EXCELLENCE</span>
+        </div>
+        <div className="about-value-content">
+          <h3>Quality</h3>
+          <p>
+            We uphold high professional standards and deliver
+            dependable results.
+          </p>
+        </div>
+      
+      </article>
+
+      <article className="about-value-card about-reveal">
+        <div className="about-value-top">
+          <span className="about-value-number">03</span>
+          <span className="about-value-label">PROTECTION</span>
+        </div>
+        <div className="about-value-content">
+          <h3>Safety</h3>
+          <p>
+            We prioritise people, safe operations and responsible
+            working practices.
+          </p>
+        </div>
+       
+      </article>
+
+      <article className="about-value-card about-reveal">
+        <div className="about-value-top">
+          <span className="about-value-number">04</span>
+          <span className="about-value-label">LONG-TERM IMPACT</span>
+        </div>
+        <div className="about-value-content">
+          <h3>Sustainability</h3>
+          <p>
+            We consider the environmental impact of our work
+            and the future we help shape.
+          </p>
+        </div>
+       
+      </article>
+    </div>
+  </div>
+</section>
+
 
       {/* EXPERTISE */}
       <section className="about-expertise">
@@ -237,40 +318,42 @@ function About() {
         </div>
       </section>
 
-      {/* SUSTAINABILITY FEATURE */}
-      <section className="about-sustainability">
-        <div className="about-sustainability-image">
-          <img
-            src="/images/about-sustainability.jpg"
-            alt="Environmental care and responsible industrial practices"
-            loading="lazy"
-          />
-        </div>
+    
+{/* ENVIRONMENTAL COMMITMENT SECTION */}
+<section className="about-commitment">
+  <div className="about-commitment-inner">
+    <div className="about-commitment-content about-reveal">
+      <span className="about-commitment-eyebrow">
+        OUR COMMITMENT
+      </span>
 
-        <div className="about-sustainability-content">
-          <p className="about-kicker">OUR COMMITMENT</p>
+      <h2>
+        Progress that respects the{" "}
+        <span>environment.</span>
+      </h2>
 
-          <h2>
-            Progress that
-            <br />
-            respects the
-            <br />
-            <span>environment.</span>
-          </h2>
+      <p>
+        We recognise the importance of responsible operations in
+        industrial and construction environments. Our focus is on
+        practical solutions that consider quality, safety and
+        environmental responsibility.
+      </p>
 
-          <p>
-            We recognise the importance of responsible operations in
-            industrial and construction environments. Our focus is on
-            practical solutions that consider quality, safety and
-            environmental responsibility.
-          </p>
+      <a href="/services" className="about-commitment-link">
+        Learn about our services <span aria-hidden="true">→</span>
+      </a>
+    </div>
 
-          <a href="/services" className="about-light-link">
-            Learn about our services
-            <ArrowRight size={18} />
-          </a>
-        </div>
-      </section>
+    <div className="about-commitment-visual about-reveal">
+      <img
+        src="/images/our-commitment.png"
+        alt="Environmental care and responsible industrial practices"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
 
       {/* MISSION AND VISION */}
       <section className="about-purpose">

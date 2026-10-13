@@ -1,137 +1,121 @@
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
 import "./Team.css";
 
 const leaders = [
   {
-    number: "01",
     name: "Rashid Amao",
     role: "Chairman",
     image: "/images/team1.png",
+    alt: "Rashid Amao, Chairman of TMCH Group Limited",
   },
   {
-    number: "02",
     name: "Musa Asaka Yusuf",
     role: "Managing Director",
     image: "/images/MUSA-YUSUF-ASAKA-MANAGING-DIRECTOR.jpeg",
+    alt: "Musa Asaka Yusuf, Managing Director of TMCH Group Limited",
   },
   {
-    number: "03",
     name: "Chibuike David Oparaji",
     role: "Deputy Managing Director",
     image: "/images/CHIBUIKE-OPARAJI-DEPUTY-MANAGING-DIRECTOR.jpeg",
-  },
-  {
-    number: "04",
-    name: "Sheidu Danjuma Asaka",
-    role: "Head, Corporate Services",
-    image: "/images/team/sheidu-asaka.jpg",
+    alt: "Chibuike David Oparaji, Deputy Managing Director of TMCH Group Limited",
   },
 ];
 
-function Team() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const elements = section.querySelectorAll(".team-reveal");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
+export default function Team() {
   return (
-    <section className="team-section" ref={sectionRef}>
+    <section className="team-section" id="team">
       <div className="team-container">
-        <div className="team-heading team-reveal">
-          <div className="team-heading-left">
-            <span className="team-eyebrow">
+
+        {/* Section heading */}
+        <div className="team-header">
+          <div className="team-heading">
+            <div className="team-eyebrow">
               <span className="team-eyebrow-dot" />
-              OUR PEOPLE / 05
-            </span>
+              <span>OUR PEOPLE / LEADERSHIP</span>
+            </div>
 
             <h2>
-              The people
-              <br />
-              behind the <span>progress.</span>
+              The people behind the{" "}
+              <span>progress.</span>
             </h2>
           </div>
 
-          <div className="team-heading-right">
+          <div className="team-intro">
             <p>
-              Strong leadership. Specialized expertise. A shared commitment
-              to delivering reliable environmental, industrial and
-              construction solutions.
+              Strong leadership. Specialized expertise. A shared
+              commitment to delivering reliable environmental,
+              industrial and construction solutions.
             </p>
 
-            <a href="/team" className="team-view-all">
-              Meet the wider team
-              <ArrowUpRight size={18} />
+            <a href="/about" className="team-link">
+              <span>Meet the wider team</span>
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 17 17 7M8 7h9v9"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
           </div>
         </div>
 
+        {/* Three leadership profiles */}
         <div className="team-grid">
-          {leaders.map((leader, index) => (
-            <article
-              className="team-card team-reveal"
-              key={leader.number}
-              style={{ "--team-delay": `${index * 100}ms` }}
-            >
-              <div className="team-image-wrap">
+          {leaders.map((leader) => (
+            <article className="team-card" key={leader.name}>
+              <div className="team-image-wrapper">
                 <img
+                  className="team-image"
                   src={leader.image}
-                  alt={leader.name}
+                  alt={leader.alt}
                   loading="lazy"
                 />
-
-                <span className="team-number">{leader.number}</span>
-
-                <span className="team-image-arrow">
-                  <ArrowUpRight size={20} />
-                </span>
               </div>
 
-              <div className="team-card-info">
-                <div>
+              <div className="team-card-details">
+                <div className="team-card-text">
                   <h3>{leader.name}</h3>
                   <p>{leader.role}</p>
                 </div>
 
-                <span className="team-blue-line" />
+                <span className="team-card-accent" aria-hidden="true" />
               </div>
             </article>
           ))}
         </div>
 
-        <div className="team-bottom team-reveal">
-          <p>
-            Different expertise. One shared direction.
-          </p>
+        {/* Bottom link */}
+        <div className="team-footer">
+          <p>Different perspectives. One shared direction.</p>
 
-          <a href="/contact" aria-label="Contact TMCH Group">
-            <span>Work with TMCH</span>
-            <ArrowUpRight size={18} />
+          <a href="/about" className="team-footer-link">
+            <span>Explore TMCH</span>
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M7 17 17 7M8 7h9v9"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         </div>
+
       </div>
     </section>
   );
 }
-
-export default Team;
