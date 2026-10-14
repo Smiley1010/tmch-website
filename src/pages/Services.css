@@ -218,7 +218,9 @@
 
 .services-page-intro {
   padding: 140px 5vw;
-
+  margin-left: 0;
+  padding-left: 0;
+  transform: translateX(-60px);
   background: #f5f5f2;
 }
 
@@ -230,7 +232,7 @@
   gap: 65px;
 
   max-width: 1250px;
-
+  
   margin: 0 auto;
 }
 

@@ -224,9 +224,6 @@ function Services() {
             </h2>
           </div>
 
-          <span className="services-page-count">
-            10 SERVICES
-          </span>
 
         </div>
 
