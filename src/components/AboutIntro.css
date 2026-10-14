@@ -271,8 +271,8 @@
 
   width: 100%;
   min-width: 0;
-  height: 245px;
-  min-height: 245px;
+  height: 280px;
+  min-height: 280px;
   margin: 0;
   padding: 32px;
 
@@ -373,6 +373,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.035);
   transform: none;
 }
+
 
 /* Active title */
 
@@ -650,3 +651,4 @@
   width: 58px;
   height: 2px;
 }
+
