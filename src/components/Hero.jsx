@@ -71,7 +71,7 @@ function Hero() {
           HERO CONTENT
       ========================================= */}
 
-      <div className="hero-content">
+      <div className="hero-content hero-fade-in">
 
     
 

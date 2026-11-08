@@ -72,12 +72,12 @@ function Projects() {
 
   return (
     <main className="projects-page" ref={sectionRef}>
-      <section className="projects-page-hero">
+      <section className="page-hero projects-page-hero">
         <div className="projects-page-hero-dots" aria-hidden="true">
           {Array.from({ length: 48 }, (_, index) => <span key={index} />)}
         </div>
-        <div className="projects-page-hero-content projects-page-reveal">
-          <div className="projects-page-label"><span />03 / OUR PROJECTS</div>
+        <div className="hero-content projects-page-hero-content projects-page-reveal">
+          <div className="projects-page-label"><span />OUR PROJECTS</div>
           <h1>Work that<br /><span>speaks for itself.</span></h1>
           <p>Explore TMCH Group’s environmental, industrial, construction, remediation and technical projects.</p>
         </div>

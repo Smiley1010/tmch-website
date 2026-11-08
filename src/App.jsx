@@ -1,3 +1,4 @@
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -6,9 +7,17 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import BlogArticle from "./pages/BlogArticle";
+
+import CMSApp from "./cms/CMSApp";
 
 function App() {
   const path = window.location.pathname;
+
+  if (path === "/cms" || path.startsWith("/cms/")) {
+    return <CMSApp />;
+  }
 
   let Page;
 
@@ -18,6 +27,10 @@ function App() {
     Page = Services;
   } else if (path === "/projects") {
     Page = Projects;
+  } else if (path === "/blog") {
+    Page = Blog;
+  } else if (path.startsWith("/blog/")) {
+    Page = BlogArticle;
   } else if (path === "/contact") {
     Page = Contact;
   } else {

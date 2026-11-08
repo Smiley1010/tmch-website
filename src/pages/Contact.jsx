@@ -66,10 +66,10 @@ function Contact() {
 
   return (
     <main className="contact-page">
-      <section className="contact-hero">
+      <section className="page-hero contact-hero">
         <div className="contact-hero-image" />
 
-        <div className="contact-hero-content">
+        <div className="hero-content contact-hero-content">
           <span className="contact-eyebrow">
             <span />
             CONTACT TMCH / LET'S TALK

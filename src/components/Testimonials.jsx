@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect, useRef } from "react";
 import "./Testimonials.css";
 
 const testimonials = [
@@ -25,6 +26,43 @@ const testimonials = [
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const testimonial = testimonials[activeIndex];
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const elements = section.querySelectorAll(".testimonials-reveal");
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
+      elements.forEach((element) =>
+        element.classList.add("is-visible")
+      );
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   const previousTestimonial = () => {
     setActiveIndex((current) =>
@@ -39,9 +77,12 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="testimonials-section">
+    <section
+      className="testimonials-section"
+      ref={sectionRef}
+    >
       <div className="testimonials-container">
-        <div className="testimonials-heading">
+        <div className="testimonials-heading testimonials-reveal">
           <div className="testimonials-eyebrow">
             <span className="testimonials-eyebrow-line" />
             <span>CLIENT TESTIMONIALS</span>
@@ -56,12 +97,15 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="testimonial-layout">
+        <div className="testimonial-layout  testimonials-reveal">
           <article
-            className="testimonial-card"
+            className="testimonial-card  testimonials-reveal"
             key={activeIndex}
           >
-            <div className="testimonial-quote-icon" aria-hidden="true">
+            <div
+              className="testimonial-quote-icon"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 48 48" fill="none">
                 <path
                   d="M18 25H9V13a4 4 0 0 1 4-4h5v16Zm21 0h-9V13a4 4 0 0 1 4-4h5v16Z"
@@ -102,13 +146,15 @@ export default function Testimonials() {
                   }`}
                   onClick={() => setActiveIndex(index)}
                   aria-label={`View testimonial ${index + 1}`}
-                  aria-current={index === activeIndex ? "true" : undefined}
+                  aria-current={
+                    index === activeIndex ? "true" : undefined
+                  }
                 />
               ))}
             </div>
           </article>
 
-          <div className="testimonial-navigation">
+          <div className="testimonial-navigation testimonials-reveal">
             <button
               className="testimonial-arrow"
               onClick={previousTestimonial}

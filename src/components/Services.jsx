@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Services.css";
 
 const services = [
@@ -38,10 +38,52 @@ const services = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const elements = section.querySelectorAll(".services-reveal");
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="services-section" id="services">
+    <section
+      className="services-section"
+      id="services"
+      ref={sectionRef}
+    >
       <div className="services-container">
-        <div className="services-heading">
+        <div className="services-heading services-reveal">
           <div className="services-heading-copy">
             <span className="services-eyebrow">
               <span className="services-eyebrow-line" />
@@ -73,13 +115,13 @@ export default function Services() {
 
         <div className="services-grid">
           {services.map((service) => (
-            <article className="service-card" key={service.slug}>
+            <article className="service-card services-reveal" key={service.slug}>
               <a
-                className="service-card-link"
+                className="service-card-link services-reveal"
                 href={`/services/${service.slug}`}
                 aria-label={`Learn more about ${service.title}`}
               >
-                <div className="service-image-wrap">
+                <div className="service-image-wrap ">
                   <img
                     className="service-image"
                     src={service.image}
@@ -102,7 +144,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="services-bottom">
+        <div className="services-bottom services-reveal">
           <span className="services-bottom-line" />
           <p>
             Environmental responsibility. Industrial expertise.

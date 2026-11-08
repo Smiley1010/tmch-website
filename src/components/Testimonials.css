@@ -364,3 +364,27 @@
     transition: none;
   }
 }
+
+
+/* Scroll-triggered reveal */
+
+.testimonials-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonials-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

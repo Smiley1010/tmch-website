@@ -5,6 +5,7 @@ import Projects from "../components/Projects";
 import Team from "../components/Team";
 import Testimonials from "../components/Testimonials";
 
+
 function Home() {
   return (
     <>

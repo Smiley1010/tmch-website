@@ -34,159 +34,142 @@
    HERO
 ========================================= */
 
+
+/* =========================================
+   SERVICES HERO — MATCH ABOUT PAGE
+========================================= */
+
 .services-page-hero {
   position: relative;
-
-  min-height: 82vh;
-
   display: flex;
-  align-items: flex-end;
-
+  align-items: center;
+  min-height: 100svh;
+  width: 100%;
   overflow: hidden;
-
+  isolation: isolate;
   background: #050607;
   color: #fff;
 }
 
+/* BACKGROUND IMAGE */
+
 .services-page-hero-image {
   position: absolute;
+  z-index: -2;
   inset: 0;
-
   overflow: hidden;
 }
 
 .services-page-hero-image img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  opacity: 0.62;
+  object-position: center;
+  opacity: 1;
 }
 
+/* DARK OVERLAY */
 
 .services-page-hero-overlay {
   position: absolute;
-  inset: 0;
   z-index: 1;
+  inset: 0;
   pointer-events: none;
-
   background:
     linear-gradient(
       90deg,
-      rgba(5, 6, 7, 0.78) 0%,
-      rgba(5, 6, 7, 0.52) 45%,
-      rgba(5, 6, 7, 0.12) 100%
+      rgba(3, 5, 7, 0.9) 0%,
+      rgba(3, 5, 7, 0.76) 35%,
+      rgba(3, 5, 7, 0.48) 68%,
+      rgba(3, 5, 7, 0.36) 100%
     ),
     linear-gradient(
-      0deg,
-      rgba(5, 6, 7, 0.65) 0%,
-      transparent 50%,
-      rgba(5, 6, 7, 0.25) 100%
+      to top,
+      rgba(3, 5, 7, 0.65) 0%,
+      transparent 35%
     );
 }
+
+/* CONTENT POSITION — HIGHER ON THE PAGE */
 
 .services-page-hero-content {
   position: relative;
   z-index: 3;
-
   width: 100%;
   max-width: 1500px;
-
   margin: 0 auto;
-
-  padding: 170px 5vw 105px;
+  padding: 145px 5vw 110px;
 }
+
+/* EYEBROW */
 
 .services-page-label {
   display: flex;
   align-items: center;
   gap: 12px;
-
   margin-bottom: 30px;
-
-  font-size: 0.7rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.72rem;
   font-weight: 700;
-
   letter-spacing: 0.14em;
-
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .services-page-label span {
+  display: block;
   width: 28px;
-  height: 2px;
-
+  height: 1px;
   background: #0878ff;
 }
 
+/* LARGE HEADING — MATCH ABOUT */
+
 .services-page-hero h1 {
-  max-width: 1000px;
-
+  max-width: 1250px;
   margin: 0;
-
   font-family: "Sora", sans-serif;
-
-  font-size: clamp(4rem, 7vw, 7.5rem);
-
+  font-size: clamp(4.5rem, 7.2vw, 7.2rem);
   font-weight: 500;
-
-  line-height: 0.96;
-
+  line-height: 0.94;
   letter-spacing: -0.065em;
+  color: #fff;
 }
 
 .services-page-hero h1 span {
   color: #0878ff;
 }
 
+/* DESCRIPTION */
+
 .services-page-hero p {
-  max-width: 610px;
-
-  margin: 35px 0 0;
-
-  font-size: 1rem;
-
-  line-height: 1.8;
-
-  color: rgba(255, 255, 255, 0.62);
+  max-width: 850px;
+  margin: 42px 0 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
 }
 
-
-
-/* =========================================
-   HERO DOTS
-========================================= */
+/* DECORATIVE DOTS */
 
 .services-page-hero-dots {
   position: absolute;
-
   z-index: 3;
-
   top: 130px;
   right: 5vw;
-
   display: grid;
-
   grid-template-columns: repeat(8, 5px);
-
   gap: 10px;
-
   transform: rotate(-8deg);
-
   pointer-events: none;
 }
 
 .services-page-hero-dots span {
   width: 5px;
   height: 5px;
-
   border-radius: 50%;
-
   background: #0878ff;
-
   opacity: 0.3;
-
   animation: serviceDotPulse 5s ease-in-out infinite;
 }
 
@@ -199,8 +182,7 @@
 }
 
 @keyframes serviceDotPulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.2;
     transform: scale(0.9);
   }
@@ -208,6 +190,80 @@
   50% {
     opacity: 0.45;
     transform: scale(1.05);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .services-page-hero-content {
+    padding-top: 140px;
+  }
+
+  .services-page-hero h1 {
+    max-width: 900px;
+  }
+
+  .services-page-hero p {
+    max-width: 650px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .services-page-hero {
+    align-items: flex-end;
+  }
+
+  .services-page-hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 5, 7, 0.68) 0%,
+        rgba(3, 5, 7, 0.62) 35%,
+        rgba(3, 5, 7, 0.9) 100%
+      );
+  }
+
+  .services-page-hero-content {
+    padding: 150px 6vw 100px;
+  }
+
+  .services-page-label {
+    margin-bottom: 22px;
+    font-size: 0.65rem;
+  }
+
+  .services-page-hero h1 {
+    font-size: clamp(3rem, 13vw, 5rem);
+    line-height: 0.95;
+  }
+
+  .services-page-hero p {
+    margin-top: 28px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .services-page-hero-dots {
+    top: 115px;
+    right: 7vw;
+    grid-template-columns: repeat(6, 4px);
+    gap: 8px;
+  }
+
+  .services-page-hero-dots span {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .services-page-hero-dots span {
+    animation: none;
   }
 }
 

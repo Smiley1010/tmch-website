@@ -473,3 +473,28 @@
     animation-iteration-count: 1 !important;
   }
 }
+/* =========================================
+   SCROLL REVEAL — SERVICES SECTION
+========================================= */
+
+.services-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .services-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

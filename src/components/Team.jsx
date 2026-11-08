@@ -1,3 +1,5 @@
+
+import { useEffect, useRef } from "react";
 import "./Team.css";
 
 const leaders = [
@@ -22,12 +24,48 @@ const leaders = [
 ];
 
 export default function Team() {
-  return (
-    <section className="team-section" id="team">
-      <div className="team-container">
+  const sectionRef = useRef(null);
 
-        {/* Section heading */}
-        <div className="team-header">
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const elements = section.querySelectorAll(".team-reveal");
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
+      elements.forEach((element) =>
+        element.classList.add("is-visible")
+      );
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="team-section" id="team" ref={sectionRef}>
+      <div className="team-container">
+        <div className="team-header team-reveal">
           <div className="team-heading">
             <div className="team-eyebrow">
               <span className="team-eyebrow-dot" />
@@ -49,12 +87,7 @@ export default function Team() {
 
             <a href="/about" className="team-link">
               <span>Meet the wider team</span>
-
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M7 17 17 7M8 7h9v9"
                   stroke="currentColor"
@@ -67,10 +100,13 @@ export default function Team() {
           </div>
         </div>
 
-        {/* Three leadership profiles */}
         <div className="team-grid">
-          {leaders.map((leader) => (
-            <article className="team-card" key={leader.name}>
+          {leaders.map((leader, index) => (
+            <article
+              className="team-card team-reveal"
+              key={leader.name}
+              style={{ "--reveal-delay": `${index * 140}ms` }}
+            >
               <div className="team-image-wrapper">
                 <img
                   className="team-image"
@@ -86,24 +122,21 @@ export default function Team() {
                   <p>{leader.role}</p>
                 </div>
 
-                <span className="team-card-accent" aria-hidden="true" />
+                <span
+                  className="team-card-accent"
+                  aria-hidden="true"
+                />
               </div>
             </article>
           ))}
         </div>
 
-        {/* Bottom link */}
-        <div className="team-footer">
+        <div className="team-footer team-reveal">
           <p>Different perspectives. One shared direction.</p>
 
           <a href="/about" className="team-footer-link">
             <span>Explore TMCH</span>
-
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
                 d="M7 17 17 7M8 7h9v9"
                 stroke="currentColor"
@@ -114,7 +147,6 @@ export default function Team() {
             </svg>
           </a>
         </div>
-
       </div>
     </section>
   );

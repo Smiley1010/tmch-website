@@ -122,7 +122,7 @@ function Services() {
           HERO
       ========================================= */}
 
-      <section className="services-page-hero">
+      <section className="page-hero services-page-hero">
 
         <div className="services-page-hero-image">
           <img
@@ -139,7 +139,7 @@ function Services() {
           ))}
         </div>
 
-        <div className="services-page-hero-content services-page-reveal">
+        <div className="services-page-hero-content hero-content services-page-reveal">
 
           <div className="services-page-label">
             <span></span>

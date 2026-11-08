@@ -102,7 +102,7 @@ useEffect(() => {
   return (
    <main className="about-page" ref={pageRef}>
       {/* HERO */}
-      <section className="about-hero">
+      <section className="page-hero about-hero">
         <div className="about-hero-image">
           <img
             src="/images/about-hero.jpg"
@@ -112,7 +112,7 @@ useEffect(() => {
 
         <div className="about-hero-overlay" />
 
-        <div className="about-hero-content">
+        <div className="hero-content about-hero-content about-reveal">
           <div className="about-eyebrow">
             <span />
             ABOUT TMCH GROUP
@@ -132,21 +132,18 @@ useEffect(() => {
             operations.
           </p>
 
-          <a href="#about-story" className="about-hero-link">
-            Discover TMCH
-            <ArrowDownRight size={19} />
-          </a>
+          
         </div>
 
         <div className="about-hero-bottom">
-          <span>ENVIRONMENTAL · INDUSTRIAL · CONSTRUCTION</span>
+          <span></span>
           <span>EST. 2007</span>
         </div>
       </section>
 
 
 {/* COMPANY INTRODUCTION */}
-<section className="about-story" id="about-story">
+<section className="about-story about-reveal" id="about-story">
   <div className="about-story-inner">
     <div className="about-story-copy">
       <div className="about-section-index">
@@ -278,7 +275,7 @@ useEffect(() => {
 
 
       {/* EXPERTISE */}
-      <section className="about-expertise">
+      <section className="about-expertise about-reveal">
         <div className="about-expertise-heading">
           <div>
             <p className="about-kicker">WHAT WE DO</p>
@@ -321,8 +318,8 @@ useEffect(() => {
     
 {/* ENVIRONMENTAL COMMITMENT SECTION */}
 <section className="about-commitment">
-  <div className="about-commitment-inner">
-    <div className="about-commitment-content about-reveal">
+  <div className="about-commitment-inner about-reveal">
+    <div className="about-commitment-content ">
       <span className="about-commitment-eyebrow">
         OUR COMMITMENT
       </span>
@@ -356,7 +353,7 @@ useEffect(() => {
 
 
       {/* MISSION AND VISION */}
-      <section className="about-purpose">
+      <section className="about-purpose about-reveal">
         <div className="about-purpose-heading">
           <p className="about-kicker">WHAT GUIDES US</p>
           <h2>
@@ -404,8 +401,8 @@ useEffect(() => {
       </section>
 
       {/* STATISTICS */}
-      <section className="about-stats">
-        <div className="about-stats-heading">
+      <section className="about-stats ">
+        <div className="about-stats-heading about-reveal">
           <p className="about-kicker">OUR JOURNEY</p>
           <h2>
             Experience with
@@ -414,7 +411,7 @@ useEffect(() => {
           </h2>
         </div>
 
-        <div className="about-stats-grid">
+        <div className="about-stats-grid about-reveal">
           {statistics.map((stat) => (
             <div className="about-stat" key={stat.label}>
               <strong>{stat.value}</strong>
@@ -430,7 +427,7 @@ useEffect(() => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="about-cta">
+      <section className="about-cta about-reveal">
         <div className="about-cta-inner">
           <div>
             <p className="about-kicker">LET'S WORK TOGETHER</p>
