@@ -17,10 +17,12 @@ app.disable("x-powered-by");
 app.use(helmet());
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL?.replace(/\/$/, ""),
+  "https://tmch-website.vercel.app",
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:4173",
+  "http://127.0.0.1:4173",
 ].filter(Boolean);
 
 app.use(cors({
